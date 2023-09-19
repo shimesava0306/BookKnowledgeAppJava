@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700&family=Oswald:wght@200;300;400;600;700&display=swap');
+
+/*body*/
+::-webkit-scrollbar{
+    width: 5px;
+    border-radius:30px;
+ }
+ ::-webkit-scrollbar-track{
+    background-color: #ccc;
+ }
+ ::-webkit-scrollbar-thumb{
+    background-color: #17585d;
+ }
+
+body{
+    font-family: 'Oswald','Noto Sans JP', sans-serif;
+    color:#505050;
+  }
+/*body end*/
+
+/*header*/
+header{
+    position:sticky;
+    top:0;
+    background:#f5f2e9;
+    z-index:999;
+    padding-bottom:0.5rem;
+    box-shadow: 3px 3px 6px #a0a0a0;
+}
+
+.headerContainer{
+    width:80%;
+    margin-inline:auto;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-top:0.5rem;
+}
+
+.headerLogo a{
+display:flex;
+align-items:center;
+}
+
+.headerLogo a:hover{
+    filter:grayscale(1)
+}
+
+.headerLogo h1{
+    font-size:3.5rem;
+    text-shadow:0px 1.5px 0px #70707070;
+    margin-right:0.5rem;
+}
+.sectionList{
+    margin-inline:15rem 0.25rem;
+    font-size:1.25rem;
+}
+
+.sectionList a:hover{
+    color:#70707070;
+    border-bottom:3px solid #70707070;
+}
+
+nav ul{
+    display:flex;
+}
+
+nav ul li{
+    margin-right:2rem;
+}
+
+.userArea{
+    display:flex;
+    gap:1rem;
+}
+
+.loginButton,.registerButton{
+    padding:0.5rem 1.5rem;
+    box-shadow:2px 2px 3px #a0a0a0, 
+    -2px -2px 3px #ffffff;
+    border-radius: 20px;
+    font-size:0.8rem;  
+}
+
+.loginButton:hover,.registerButton:hover{
+    box-shadow: inset 2px 2px 3px #a0a0a0, 
+    inset -2px -2px 3px #ffffff;
+    color:#70707070;
+}
+/*header end*/
+
+/*footer*/
+footer{
+    background-color: black;
+    height:10rem;
+    width:100%;
+    color:#FFFFFF;
+}
+
+.footerContainer{
+    height:100%;
+    width:90%;
+    margin-inline:auto;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.footerLogo{
+    margin-top:2rem;
+}
+
+.footerLogo a:hover{
+    filter:grayscale(1)
+}
+
+.footerSectionList ul{
+    display:flex;
+}
+
+.footerSectionList li{
+    margin-right:2rem;
+    font-size:1.25rem;
+}
+
+.footerSectionList a:hover{
+    color:#646464;
+    border-bottom:3px solid #646464;
+}
+
+.copyright{
+    background:#000000;
+    text-align:center;
+    font-size:1rem;
+    font-weight:300;
+    letter-spacing:1px;
+    padding-block:0.5rem;
+}
+/*footer end*/

@@ -1,0 +1,80 @@
+main{
+    background-image:url("../img/booksBackground.svg");
+    padding-block:3rem;
+}
+
+.mainContainer{
+    width:70%;
+    margin-inline:auto;
+}
+
+.mainContainer h1{
+    width:50rem;
+    font-size:2rem;
+    padding:1rem 1.5rem 0.5rem 1.5rem;
+    margin:1rem auto 0 auto;
+    text-align:center;
+}
+
+.user{
+    font-size:1.5rem;
+    text-align:center;
+    margin-block:0.75rem;
+}
+
+.detailInfo {
+    width:60%;
+    margin-inline:auto;
+}
+
+.topicBookInfo{
+    margin:1.5rem auto 3rem auto;
+    width:100%;
+}
+
+.sectionContainer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom:3.5rem;
+}
+
+.mypageSection{
+    width:20rem;
+    height:20rem;
+    background-image:url("../img/booksBackground.svg");
+    backdrop-filter: brightness(20%);
+    margin:2rem 6rem;
+    position:relative;
+}
+
+.mypageSection h3{
+    position:absolute;
+    bottom:0;
+    left:0;
+    font-size:5rem;
+    color:#ffffff;
+    text-shadow:3px 3px 5px #707070;
+}
+.cardInner{
+    margin-block:3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    grid-gap: 1rem;
+    box-shadow: inset 3px 3px 6px #a0a0a0, 
+    inset -3px -3px 6px #ffffff;
+    background-color: #f5f2e9;
+    border-radius:15px;
+    padding:3rem 0.5rem;
+}
+
+.card{
+    text-align:center;
+    padding-block:1rem;
+    border:2px solid #70707070;
+}
+.card img{
+    width:150px;
+    margin-bottom:1rem;
+}

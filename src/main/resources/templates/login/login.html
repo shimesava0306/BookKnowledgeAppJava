@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOG IN | BOOK KNOWLEDGE</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+<link th:href="@{/css/header.css}" rel="stylesheet">
+<link th:href="@{/css/login.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div class="headerContainer">
+			<div class="headerLogo">
+				<a th:href="@{/}">
+					<h1>Book Knowledge</h1> <img src="/img/bookIcon.svg"
+					alt="Book Knowledge" width="72px">
+				</a>
+			</div>
+		</div>
+	</header>
+
+    <main>
+        <div class="mainContainer">
+            <h1>LOG IN / 会員ログイン</h1>
+            <form action="">
+                <div class="idArea">
+                    <h2>ログインID</h2>
+                    <input type="text" name="loginId">
+                </div>
+
+                <div class="passArea">
+                    <h2>パスワード</h2>
+                    <input type="password" name="pass">
+                </div>
+
+                <input type="submit" value="ログイン" class="submitBtn">
+            </form>
+
+            <h2 class="socialLoginTitle">SNSでログイン</h2>
+            <div class="socialLogin">
+                <button class="google"><img src="/img/google.svg" alt="">Googleでログイン</button>
+                <button class="facebook"><img src="/img/facebook.svg" alt="">FaceBookでログイン</button>
+                <button class="twitter"><img src="/img/x.svg" alt="">X/Twitterでログイン</button>
+                <button class="line"><img src="/img/line.svg" alt="">LINEでログイン</button>
+            </div>
+
+            <div class="register">
+                <a th:href="@{register}" class="registerBtn">新規会員登録はこちら</a>
+                <a th:href="@{/}" class="topBtn">TOPに戻る</a>
+            </div>
+        </div>
+    </main>
+
+	<footer>
+		<div class="footerContainer">
+			<div class="footerLogo">
+				<a th:href="@{/}"><img src="../img/footerIcon.svg" alt="bookKnowledge"
+					width="200px"></a>
+			</div>
+		</div>
+		<div class="copyright">©copyright Zangies EngineerGroup</div>
+	</footer>
+</body>
+
+</html>

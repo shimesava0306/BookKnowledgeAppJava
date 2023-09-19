@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER DONE | BOOK KNOWLEDGE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/registerDone.css}">
+</head>
+
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="headerLogo">
+                <a th:href="@{/}">
+                    <h1>Book Knowledge</h1>
+                    <img src="/img/bookIcon.svg" alt="Book Knowledge" width="72px">
+                </a>
+            </div>
+            <div class="sectionList">
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
+                        <li> <a th:href="@{/post}">POST/書籍登録</a></li>
+                        <li> <a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="userArea" id="userName">
+                <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
+                <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="mainContainer">
+            <h1>登録ありがとうございます！</h1>
+
+            <p>会員登録が完了いたしました。<br>
+                ご登録いただいたメールアドレスに登録完了メールを<br>
+                送付いたしましたのでご確認をお願いいたします。<br>
+                <br>
+                引き続きBOOK KNOWLEDGEをお楽しみください。
+            </p>
+
+            <a class="topBtn" th:href="@{/}">TOPへ戻る</a>
+            <a class="mypageBtn" th:href="@{/mypage}">マイページ</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="footerLogo">
+                <a th:href="@{/}"><img src="/img/footerIcon.svg" alt="bookKnowledge" width="200px"></a>
+            </div>
+            <div class="footerSectionList">
+                <ul>
+                    <li><a th:href="@{/}">TOP</a></li>
+                    <li><a th:href="@{/list}">BOOKS</a></li>
+                    <li> <a href="@{/post}">POST</a></li>
+                    <li> <a href="@{/mypage}">MYPAGE</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">©copyright Zangies EngineerGroup</div>
+    </footer>
+</body>
+
+</html>

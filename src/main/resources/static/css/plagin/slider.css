@@ -1,0 +1,12 @@
+.sample-slider{
+    width:100%;
+    box-shadow:5px 5px 20px #a0a0a0, 
+    -5px -5px 20px #ffffff;
+    border-radius:10px;
+}
+.sample-slider img{
+    display:flex;
+    width: 90%;
+    justify-content: center;
+    margin-inline:auto;
+}

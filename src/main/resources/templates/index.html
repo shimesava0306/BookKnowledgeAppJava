@@ -1,0 +1,193 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP | BOOK KNOWLEDGE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link th:href="@{/css/plagin/slider.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="headerLogo">
+                <a th:href="@{/}">
+                    <h1>Book Knowledge</h1>
+                    <img src="/img/bookIcon.svg" alt="Book Knowledge" width="72px">
+                </a>
+            </div>
+            <div class="sectionList">
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
+                        <li> <a th:href="@{/post}">POST/書籍登録</a></li>
+                        <li> <a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="userArea" id="userName">
+                <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
+                <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="mainContainer">
+            <div class="swiper sample-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/Frame 1.svg"></div>
+                    <div class="swiper-slide"><img src="img/Frame 2.svg"></div>
+                    <div class="swiper-slide"><img src="img/Frame 3.svg"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <section class="heroTopics">
+                <div class="heroBooksTitle">
+                    <h2>今週、注目の一冊</h2>
+                </div>
+
+                <div class="topicsMain">
+                    <img src="img/bookSample.jpg" alt="book1">
+
+                    <div class="heroBooksInfo">
+                        <table class="topicBookInfo">
+                            <th>タイトル</th>
+                            <td>「繊細さん」の本</td>
+                            <th>著者</th>
+                            <td>武田 友紀</td>
+                            <th>点数</th>
+                            <td>95 / 100</td>
+                            <th>感想</th>
+                            <td>テストテストテストテストテストテストテストテストテストテストテストテストテスト
+                                テストテストテストテストテストテストテストテストテストテストテストテストテスト
+                                テストテストテストテストテストテストテストテストテストテストテストテストテスト
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <div class="infoLink">
+                    <a th:href="@{/list/listDetail}">詳しくはこちら</a>
+                    <a th:href="@{/list/review}">その他のレビューはこちら</a>
+                </div>
+            </section>
+            <section class="appInfo">
+                <div class="infoLeft">
+                    <div class="appInfoTitle">
+                        <h2>Book Knowledgeとは</h2>
+                    </div>
+                    <div class="appInfoMain">
+                        <p>インターネット、スマートフォンの普及により<br>
+                            様々な情報媒体が増えた中でも本の情報の価値というものは衰えることはありません<br>
+                            しかし映像や音声などの情報媒体などに比べて、情報が定着しにくいというのも事実です。<br>
+                            そこで自分の読んだ書籍を簡単にまとめ、少ない時間でも書籍の情報を振り返れるようにしようと<br>
+                            作られたのがこのBook Knowledgeになります。<br>
+                            <br>
+                            自らの読んだ書籍の振り返り、読み終えてすぐのアウトプットなどにより<br>
+                            より得た情報を記憶に定着させるだけではなく<br>
+                            そのほかのユーザー様が読んだ書籍の情報まで確認することができるため<br>
+                            これから読もうとしている書籍の情報まで確認することができます。<br>
+                            <br>
+                            このデジタル社会でもまだまだ使用されてる本を最大限活用するため<br>
+                            ぜひこのアプリを使用ください。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="infoRight">
+                    <img src="img/appInfoimage.png" alt="">
+                </div>
+            </section>
+
+            <section class="genreSelect">
+
+                <form action="">
+                    <h2>検索</h2>
+                    <div class="searchBar">
+                        <input type="text" name="keyword">
+                        <button class="searchButton">
+                            <img src="img/search.svg" alt="" width="20px">
+                        </button>
+                    </div>
+                </form>
+
+                <form>
+                    <h2>書籍の種類</h2>
+                    <div class="genreSelectArea">
+                        <label><input type="checkbox" value="文学・文芸" name="genre"><span>文学・文芸</span></label>
+                        <label><input type="checkbox" value="ビジネス書" name="genre"><span>ビジネス書</span></label>
+                        <label><input type="checkbox" value="趣味・実用" name="genre"><span>趣味・実用</span></label>
+                        <label><input type="checkbox" value="専門書" name="genre"><span>専門書</span></label>
+                        <label><input type="checkbox" value="学習参考書" name="genre"><span>学習参考書</span></label>
+                        <label><input type="checkbox" value="絵本・児童書" name="genre"><span>絵本・児童書</span></label>
+                        <label><input type="checkbox" value="漫画・コミック" name="genre"><span>漫画・コミック</span></label>
+                        <label><input type="checkbox" value="雑誌" name="genre"><span>雑誌</span></label>
+                        <label><input type="checkbox" value="雑誌" name="genre"><span>歴史書</span></label>
+                    </div>
+                </form>
+
+                <form>
+                    <h2>ジャンル</h2>
+                    <div class="genreSelectArea">
+                        <label><input type="checkbox" value="アクション" name="genre"><span>アクション</span></label>
+                        <label><input type="checkbox" value="ミステリー" name="genre"><span>ミステリー</span></label>
+                        <label><input type="checkbox" value="SF" name="genre"><span>SF</span></label>
+                        <label><input type="checkbox" value="ノンフィクション" name="genre"><span>ノンフィクション</span></label>
+                        <label><input type="checkbox" value="科学" name="genre"><span>科学</span></label>
+                        <label><input type="checkbox" value="ファンタジー" name="genre"><span>ファンタジー</span></label>
+                        <label><input type="checkbox" value="スポーツ" name="genre"><span>スポーツ</span></label>
+                        <label><input type="checkbox" value="音楽" name="genre"><span>音楽</span></label>
+                        <label><input type="checkbox" value="社会・歴史" name="genre"><span>社会・歴史</span></label>
+                        <label><input type="checkbox" value="純文学" name="genre"><span>純文学</span></label>
+                        <label><input type="checkbox" value="テクノロジー" name="genre"><span>テクノロジー</span></label>
+                        <label><input type="checkbox" value="ホラー" name="genre"><span>ホラー</span></label>
+                    </div>
+                </form>
+            </section>
+            <section class="userEdit">
+                <div class="bookPostArea">
+                    <div class="areaInfo">
+                        <h3>書籍登録</h3>
+                        <p>読んだ書籍を登録するのはこちらから</p>
+                    </div>
+                    <a class="bookPost" th:href="@{/post}">POST / 書籍登録</a>
+                </div>
+
+                <div class="myPageArea">
+                    <div class="areaInfo">
+                        <h3>マイページ</h3>
+                        <p>登録書籍、お気に入り、個人情報編集はこちらから</p>
+                    </div>
+                    <a class="myPage" th:href="@{/mypage}">MY PAGE / マイページ</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footerContainer">
+            <div class="footerLogo">
+                <a th:href="@{/}"><img src="/img/footerIcon.svg" alt="bookKnowledge" width="200px"></a>
+            </div>
+            <div class="footerSectionList">
+                <ul>
+                    <li><a th:href="@{/}">TOP</a></li>
+                    <li><a th:href="@{/list}">BOOKS</a></li>
+                    <li> <a href="@{/post}">POST</a></li>
+                    <li> <a href="@{/mypage}">MYPAGE</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">©copyright Zangies EngineerGroup</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script th:src="@{/js/slider.js}"></script>
+</body>
+
+</html>

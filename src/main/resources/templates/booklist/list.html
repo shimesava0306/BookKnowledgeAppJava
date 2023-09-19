@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKS | BOOK KNOWLEDGE</title>
+    <script src="https://kit.fontawesome.com/79d73fee52.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/plagin/pagination.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="headerLogo">
+                <a th:href="@{/}">
+                    <h1>Book Knowledge</h1>
+                    <img src="img/bookIcon.svg" alt="Book Knowledge" width="72px">
+                </a>
+            </div>
+            <div class="sectionList">
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
+                        <li> <a th:href="@{/post}">POST/書籍登録</a></li>
+                        <li> <a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="userArea" id="userName">
+                <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
+                <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="mainContainer">
+            <div class="panTitle"><a th:href="@{/}">TOP　|　</a>BOOKS / 書籍一覧</div>
+            <section class="genreSelect">
+                <form action="">
+                    <h2>検索</h2>
+                    <div class="searchBar">
+                        <input type="text" name="keyword">
+                        <button class="searchButton">
+                            <img src="img/search.svg" alt="" width="20px">
+                        </button>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="genreSelectArea">
+                        <label><input type="checkbox" value="文学・文芸" name="genre"><span>文学・文芸</span></label>
+                        <label><input type="checkbox" value="ビジネス書" name="genre"><span>ビジネス書</span></label>
+                        <label><input type="checkbox" value="趣味・実用" name="genre"><span>趣味・実用</span></label>
+                        <label><input type="checkbox" value="専門書" name="genre"><span>専門書</span></label>
+                        <label><input type="checkbox" value="学習参考書" name="genre"><span>学習参考書</span></label>
+                        <label><input type="checkbox" value="絵本・児童書" name="genre"><span>絵本・児童書</span></label>
+                        <label><input type="checkbox" value="漫画・コミック" name="genre"><span>漫画・コミック</span></label>
+                        <label><input type="checkbox" value="雑誌" name="genre"><span>雑誌</span></label>
+                        <label><input type="checkbox" value="雑誌" name="genre"><span>歴史書</span></label>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="genreSelectArea">
+                        <label><input type="checkbox" value="アクション" name="genre"><span>アクション</span></label>
+                        <label><input type="checkbox" value="ミステリー" name="genre"><span>ミステリー</span></label>
+                        <label><input type="checkbox" value="SF" name="genre"><span>SF</span></label>
+                        <label><input type="checkbox" value="ノンフィクション" name="genre"><span>ノンフィクション</span></label>
+                        <label><input type="checkbox" value="科学" name="genre"><span>科学</span></label>
+                        <label><input type="checkbox" value="ファンタジー" name="genre"><span>ファンタジー</span></label>
+                        <label><input type="checkbox" value="スポーツ" name="genre"><span>スポーツ</span></label>
+                        <label><input type="checkbox" value="音楽" name="genre"><span>音楽</span></label>
+                        <label><input type="checkbox" value="社会・歴史" name="genre"><span>社会・歴史</span></label>
+                        <label><input type="checkbox" value="純文学" name="genre"><span>純文学</span></label>
+                        <label><input type="checkbox" value="テクノロジー" name="genre"><span>テクノロジー</span></label>
+                        <label><input type="checkbox" value="ホラー" name="genre"><span>ホラー</span></label>
+                    </div>
+                </form>
+            </section>
+
+            <section class="topicArea">
+                <h1 class="topicAreaTitle">書籍一覧</h1>
+                <h2 class="mostTopicTitle">評価の高い書籍</h2>
+                <div class="mainTopics">
+                    <a th:href="@{/list/listDetail}">
+                        <div class="topic1">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="bookTitle">なるほどデザイン - 目で見て楽しむデザインの本</h3>
+                            <p class="author">筒井美希</p>
+                            <p class="score">95 / 100</p>
+                        </div>
+                    </a>
+                    <a href="/listDetail.html">
+                        <div class="topic2">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="bookTitle">おとなになるのび太たちへ</h3>
+                            <p class="author">藤子・F・不二雄</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                    <a href="/listDetail.html">
+                        <div class="topic3">
+                            <img src="img/listSimple3.jpg" alt="">
+
+                            <h3 class="bookTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="author">岸見一郎</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                </div>
+
+                <a href="/" class="pageMover">もっと見る ></a>
+            </section>
+
+            <section class="topicArea">
+                <h2 class="mostTopicTitle">評価の高い書籍</h2>
+                <div class="mainTopics">
+                    <a href="/">
+                        <div class="topic1">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="bookTitle">なるほどデザイン - 目で見て楽しむデザインの本</h3>
+                            <p class="author">筒井美希</p>
+                            <p class="score">95 / 100</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="topic2">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="bookTitle">おとなになるのび太たちへ</h3>
+                            <p class="author">藤子・F・不二雄</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="topic3">
+                            <img src="img/listSimple3.jpg" alt="">
+
+                            <h3 class="bookTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="author">岸見一郎</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                </div>
+
+                <a href="/" class="pageMover">もっと見る ></a>
+            </section>
+
+            <section class="topicArea">
+                <h2 class="mostTopicTitle">評価の高い書籍</h2>
+                <div class="mainTopics">
+                    <a href="/">
+                        <div class="topic1">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="bookTitle">なるほどデザイン - 目で見て楽しむデザインの本</h3>
+                            <p class="author">筒井美希</p>
+                            <p class="score">95 / 100</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="topic2">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="bookTitle">おとなになるのび太たちへ</h3>
+                            <p class="author">藤子・F・不二雄</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="topic3">
+                            <img src="img/listSimple3.jpg" alt="">
+
+                            <h3 class="bookTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="author">岸見一郎</p>
+                            <p class="score">95 / 100</p>
+
+                        </div>
+                    </a>
+                </div>
+
+                <a href="/" class="pageMover">もっと見る ></a>
+            </section>
+
+            <section class="allBooks">
+                <h2 class="mostTopicTitle">全て</h2>
+
+                <div class="showItemContainer" id="showItem">
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple1.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                    <a href="/">
+                        <div class="card">
+                            <img src="img/listSimple2.jpg" alt="">
+
+                            <h3 class="cardTitle">嫌われる勇気 - アドラー心理学</h3>
+                            <p class="cardAuthor">岸見一郎</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section id="pager"></section>
+    </main>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="footerLogo">
+                <a th:href="@{/}"><img src="img/footerIcon.svg" alt="bookKnowledge" width="200px"></a>
+            </div>
+            <div class="footerSectionList">
+                <ul>
+                    <li><a th:href="@{/}">TOP</a></li>
+                    <li><a th:href="@{/list}">BOOKS</a></li>
+                    <li> <a href="@{/post}">POST</a></li>
+                    <li> <a href="@{/mypage}">MYPAGE</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">©copyright Zangies EngineerGroup</div>
+    </footer>
+
+    <script th:src="@{js/plagins/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{js/plagins/paginathing.min.js}"></script>
+    <script th:src="@{/js/pagenation.js}"></script>
+</body>
+
+</html>

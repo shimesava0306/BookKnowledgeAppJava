@@ -1,0 +1,44 @@
+main{
+    background-image:url("../img/booksBackground.svg");
+}
+
+.mainContainer{
+    width:70%;
+    margin-inline:auto;
+    padding-bottom:5rem;
+}
+
+.panTitle{
+    padding-top:1.5rem;
+}
+
+.bookTitle{
+    font-size:3rem;
+    padding-top:1.5rem;
+    margin-bottom:0.5rem;
+}
+.author{
+    font-size:1.5rem;
+}
+.reviewAll{
+    padding:1.5rem 5rem;
+    margin-block:3rem;
+    background-color: #f5f2e9;
+    box-shadow: inset 6px 6px 3px #a0a0a0, 
+    inset -6px -6px 3px #ffffff;
+    border-radius:30px;
+}
+
+.reviewCard{
+    width:70%;
+    margin:2rem;
+}
+
+.reviewCard h3{
+    font-size:2rem;
+    margin-bottom:0.5rem;
+}
+
+.reviewCard p{
+    margin-bottom:1rem;
+}

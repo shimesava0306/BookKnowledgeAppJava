@@ -1,0 +1,75 @@
+main{
+    background-image:url("../img/booksBackground.svg");
+    padding-block:7.43rem;
+}
+
+.mainContainer{
+    width:70%;
+    margin-inline:auto;
+    text-align:center;
+    background:#f5f2e9;
+    padding-block:2rem 3rem;
+    box-shadow: inset 3px 3px 6px #a0a0a0, 
+    inset -3px -3px 6px #ffffff;
+    border-radius:20px;
+}
+
+.mainContainer h1{
+    width:30rem;
+    font-size:2rem;
+    padding:1rem 1.5rem 1.5rem 1.5rem;
+    margin:1rem auto 2rem auto;
+}
+
+.mainContainer p{
+    margin-bottom:2rem;
+}
+
+.topBtn,.mypageBtn{
+    width:15rem;
+    padding:1rem 3rem;
+    background:#FFFFFF;
+    border-radius:5px;
+    box-shadow: 4px 4px 8px #a0a0a0,
+    -4px -4px 8px #ffffff;
+    margin:1rem;
+}
+
+.topBtn:hover,.mypageBtn:hover{
+box-shadow: inset 3px 3px 6px #a0a0a0, 
+inset -3px -3px 6px #ffffff;
+}
+
+.detailInfo{
+    display:flex;
+}
+
+.detailInfo img{
+    height:40rem;
+    width:auto;
+    margin:auto;
+}
+
+.topicBookInfo{
+    margin:1.5rem auto 3rem auto;
+    width:50%;
+}
+
+.topicBookInfo th,
+.topicBookInfo td{
+    width:100%;
+    padding:1rem;
+    
+    display: block;
+    text-align: left;
+    margin-inline:auto;
+}
+.topicBookInfo th{
+    background-color: #b9b9b9;
+    font-size:1.25rem;
+}
+.topicBookInfo td{
+    background-color: #ffffff;
+    font-size:1.25rem;
+    padding-block:0.65rem;
+}

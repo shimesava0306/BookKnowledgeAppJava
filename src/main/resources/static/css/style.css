@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700&family=Oswald:wght@200;300;400;600;700&display=swap');
+
+/*body*/
+::-webkit-scrollbar{
+    width: 5px;
+    border-radius:30px;
+ }
+ ::-webkit-scrollbar-track{
+    background-color: #ccc;
+ }
+ ::-webkit-scrollbar-thumb{
+    background-color: #17585d;
+ }
+
+body{
+    font-family: 'Oswald','Noto Sans JP', sans-serif;
+    color:#505050;
+  }
+/*main*/
+main{
+    background-image:url("../img/booksBackground.svg");
+    padding-top:2rem;
+    
+}
+.mainContainer{
+    width:80%;
+    margin-inline:auto;
+    padding-bottom:3rem;
+}
+/*swiper*/
+.swiper{
+	height:83%;
+    margin-bottom:2rem;
+    background-color: #f5f2e9;
+}
+/*swiper end*/
+
+/*hero*/
+.heroBooksTitle h2{
+    font-size:3rem;
+    text-align:right;
+    margin-bottom:5rem;
+    position:relative;
+    z-index:1;
+}
+
+.heroBooksTitle h2::after{
+    position:absolute;
+    content:"";
+    right:0;
+    bottom:-0.5rem;
+    width:30%;
+    height:1rem;
+    background:#70707070;
+    z-index:-1;
+}
+.heroBooksInfo{
+    display:flex;
+    justify-content: flex-end;
+}
+.topicBookInfo {
+    width: 70%;
+}
+
+.topicBookInfo th,
+.topicBookInfo td{
+    padding: 0.75rem;
+    display: block;
+    text-align: left;
+}
+.topicBookInfo th{
+    background-color: #b9b9b9;
+    font-size:1.25rem;
+}
+.topicBookInfo td{
+    background-color: #ffffff;
+    font-size:1.25rem;
+}
+
+.topicsMain{
+    display:flex;
+    justify-content: space-between;
+    margin-inline:5rem;
+}
+
+.heroTopics{
+    padding:3rem 5rem;
+    box-shadow: inset 6px 6px 3px #a0a0a0, 
+    inset -6px -6px 3px #ffffff;
+    border-radius: 0.5rem;
+    background-color: #f5f2e9;
+}
+
+.heroTopics img{
+    width:23rem;
+    height: auto;
+}
+/*hero end*/
+
+/*appInfo*/
+.appInfo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-block:7rem;
+    padding-block:3rem;
+    border-radius: 10px;
+    box-shadow: inset 6px 6px 3px #a0a0a0, 
+    inset -6px -6px 3px #ffffff;
+    background-color: #f5f2e9;
+}
+.appInfoTitle{
+    font-size:3rem;
+    margin-bottom:3rem;
+}
+
+.appInfoMain{
+    font-size:1.15rem;
+    letter-spacing:1.15px;
+    line-height:1.75rem;
+}
+
+.infoRight img{
+    opacity: 0.4;
+}
+/*appInfo end*/
+
+/*genre*/
+form{
+    padding:2rem;
+}
+.genreSelect{
+    margin-block:5rem;
+    box-shadow: inset 10px 10px 6px #a0a0a0, 
+    inset -10px -10px 6px #ffffff;
+    border-radius:10px;
+    background-color: #f5f2e9;
+}
+
+.searchBar{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.searchButton{
+    background:#0077ff;
+    padding:1rem 3rem;
+    border-radius:30px;
+    box-shadow: 4px 4px 8px #a0a0a0,
+    -4px -4px 8px #ffffff;
+}
+
+.genreSelect input{
+    width:90%;
+    padding:0.5rem;
+    font-size:24px;
+    background:#FFFFFF;
+    border-radius:30px;
+    margin-block:2rem;
+    margin-right:2rem;
+    box-shadow: 4px 4px 8px #a0a0a0,
+    -4px -4px 8px #ffffff;
+}
+
+.genreSelectArea{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.genreCheck{
+    margin-inline:1rem;
+}
+
+form{
+    margin-bottom:2rem;
+}
+
+form h2{
+    margin-bottom:1rem;
+    font-size:1.5rem;
+}
+
+label {
+    margin:2rem;
+    margin-left:0
+}
+label input {
+    display: none;
+}
+label span {
+    box-shadow: 4px 4px 8px #a0a0a0,
+    -4px -4px 8px #ffffff;
+    border-radius: 30px;
+    padding: 1rem 3rem; 
+    cursor:pointer;
+}
+label input:checked + span{
+    color: #FFF; /* 文字色を白に */
+    background: #FBB; /* 背景色を薄い赤に */
+    box-shadow: inset 2px 2px 3px #a0a0a0, 
+    inset -2px -2px 3px #ffffff;
+}
+
+/*genre end*/
+
+.infoLink{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items:end;
+    font-size:1rem;
+    text-align: right;
+    margin-top:-2rem;
+}
+
+.infoLink a{
+    padding:0.35rem;
+    width:15rem;
+}
+
+.infoLink a::after{
+    content:" ▶";
+}
+
+.infoLink a:hover{
+    color:#70707070;
+}
+
+/*userEdit*/
+.userEdit{
+    margin:3rem 15rem;
+    display:flex;
+    justify-content:center;
+    gap:3rem;
+}
+
+.bookPostArea,.myPageArea{
+    display:flex;
+    align-items:center;
+    box-shadow: inset 6px 6px 3px #a0a0a0, 
+    inset -6px -6px 3px #ffffff;
+    padding:2rem 2rem;
+    border-radius:10px;
+    background-color: #f5f2e9;
+}
+
+.areaInfo{
+    margin-right:2rem;
+    width:20rem;
+}
+
+.areaInfo h3{
+    font-size:1.5rem;
+    text-align:left;
+    margin-bottom:0.5rem;
+}
+
+
+.bookPost,.myPage{
+	display:flex;
+    width:20rem;
+    height:5rem;
+    border-radius:50px;
+    box-shadow: 6px 6px 12px #a0a0a0,
+    -6px -6px 12px #ffffff;
+    justify-content:center;
+    align-items:center;
+}
+
+.bookPost:hover,.myPage:hover{
+    box-shadow: inset 2px 2px 3px #a0a0a0, 
+    inset -2px -2px 3px #ffffff;
+    color:#70707070;
+}
+
+/*userEditEnd*/
