@@ -58,6 +58,13 @@ main{
     letter-spacing:2px;
 }
 
+.idArea p,.passArea p,.nameArea p,.mailArea p{
+	color:#FF0000;
+	font-size:0.75rem;
+	text-align:left;
+	margin-bottom:0.5rem;
+	}
+
 .genderArea select{
     cursor:pointer;
 }

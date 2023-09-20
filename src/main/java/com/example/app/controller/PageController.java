@@ -1,10 +1,25 @@
 package com.example.app.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.app.domain.Books;
+import com.example.app.domain.Member;
+import com.example.app.mapper.BooksMapper;
+import com.example.app.mapper.MemberMapper;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class PageController {
+	
+	private final BooksMapper mapperBooks;
+	private final MemberMapper mapper;
 
     @GetMapping("/")
     public String indexPage() {
@@ -29,13 +44,24 @@ public class PageController {
     
     //post
     @GetMapping("/post")
-    public String postPage() {
+    public String postPage(@ModelAttribute("books") Books books) {
         return "post/post";
     }
+    
+    @PostMapping("/post")
+    public String add(@Valid Books books, Errors errors) throws Exception {
+        if (errors.hasErrors()) {
+            return "post/post"; 
+        }
+        mapperBooks.addBooks(books);
+        return "redirect:/post/postDone";
+    }
+    
     @GetMapping("/post/postCheck")
     public String postCheckPage() {
         return "post/postCheck";
     }
+    
     @GetMapping("/post/postDone")
     public String postDonePage() {
         return "post/postDone";
@@ -64,9 +90,19 @@ public class PageController {
     }
     
     @GetMapping("/register")
-    public String registerPage() {
+    public String registerPage(@ModelAttribute("member") Member member) {
         return "login/register";
     }
+    
+    @PostMapping("/register")
+    public String add(@Valid Member member, Errors errors) throws Exception {
+        if (errors.hasErrors()) {
+            return "login/register"; // エラー時に登録ページに戻す
+        }
+        mapper.addMember(member);
+        return "redirect:/register/registerDone";
+    }
+
     
     @GetMapping("/register/registerCheck")
     public String registerCheckPage() {

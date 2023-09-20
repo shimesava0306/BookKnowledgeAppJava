@@ -44,43 +44,50 @@
                 <input type="submit" value="画像を挿入する" class="submitBtn">
             </form>
 
-            <form action="">
+            <form action="" method="post" th:object="${books}">
                 <div class="inputArea">
                     <div class="bookTitle inputBlock">
                         <h2 class="inputTitle">タイトル / <span>50文字以内で入力してください</span></h2>
-                        <input type="text" name="bookTitle">
+                        <p th:errors="*{bookName}" class="error"></p>
+                        <input type="text" th:field="*{bookName}">
                     </div>
 
                     <div class="author inputBlock">
                         <h2 class="inputTitle">著者名 / <span>30文字以内で入力してください</span></h2>
-                        <input type="text" name="author">
+                        <p th:errors="*{author}" class="error"></p>
+                        <input type="text" th:field="*{author}">
                     </div>
 
                     <div class="score inputBlock">
                         <h2 class="inputTitle">点数 / 100点満点 / <span>100までの数字で入力してください</span></h2>
-                        <input type="text" name="score">
+                        <p th:errors="*{score}" class="error"></p>
+                        <input type="text" th:field="*{score}">
                     </div>
 
                     <div class="catchCopy inputBlock">
                         <h2 class="inputTitle">キャッチコピー / <span>100文字以内で入力してください</span></h2>
-                        <input type="text" name="catchCopy">
+                        <p th:errors="*{catchCopy}" class="error"></p>
+                        <input type="text" th:field="*{catchCopy}">
                     </div>
 
                     <div class="threePoints inputBlock">
                         <h2 class="inputTitle">簡単三行まとめ / <span>各50文字以内で入力してください</span></h2>
-                        <div class="points"><input type="email" name="mail"></div>
-                        <div class="points"><input type="email" name="mail"></div>
-                        <div class="points"><input type="email" name="mail"></div>
+                        <p th:errors="*{pointFirst}" class="error"></p>
+                        <div class="points"><input type="text" th:field="*{pointFirst}"></div>
+                        <div class="points"><input type="text" th:field="*{pointSecond}"></div>
+                        <div class="points"><input type="text" th:field="*{pointThird}"></div>
                     </div>
 
                     <div class="threePoints inputBlock">
                         <h2 class="inputTitle">感想 / <span>150文字以内で入力してください</span></h2>
-                        <textarea></textarea>
+                        <p th:errors="*{review}" class="error"></p>
+                        <textarea th:field="*{review}"></textarea>
                     </div>
 
-                    <div class="catchCopy inputBlock">
+                    <div class="threePoints inputBlock">
                         <h2 class="inputTitle">購入URL</h2>
-                        <input type="text" name="buyLink">
+                        <p th:errors="*{buyLink}" class="error"></p>
+                        <input type="text" th:field="*{buyLink}">
                     </div>
                 </div>
 

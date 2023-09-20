@@ -2,12 +2,13 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTER | BOOK KNOWLEDGE</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/registerCheck.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REGISTER | BOOK KNOWLEDGE</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/registerCheck.css}">
 </head>
 
 <body>
@@ -15,16 +16,14 @@
 		<div class="headerContainer">
 			<div class="headerLogo">
 				<a th:href="@{/}">
-					<h1>Book Knowledge</h1> 
-					<img src="/img/bookIcon.svg" alt="Book Knowledge" width="72px">
+					<h1>Book Knowledge</h1> <img src="/img/bookIcon.svg"
+					alt="Book Knowledge" width="72px">
 				</a>
 			</div>
 		</div>
 	</header>
-
     <main>
         <div class="mainContainer">
-
             <h1>入力情報確認</h1>
 
             <div class="detailTitle">
@@ -34,13 +33,15 @@
             <div class="detailInfo">
                 <table class="topicBookInfo">
                     <th>ユーザーID</th>
-                    <td>test</td>
+                    <td th:text="${member.userId}"></td>
                     <th>パスワード</th>
-                    <td>xxxxxx</td>
+                    <td th:text="${member.password}"></td>
                     <th>ユーザー名</th>
-                    <td>テストユーザー</td>
+                    <td th:text="${member.name}"></td>
+                    <th>性別</th>
+                    <td th:text="${member.gender == 1 ? '男性' : (member.gender == 2 ? '女性' : 'どちらでもない')}"></td>
                     <th>メールアドレス</th>
-                    <td>xxxxxx@xxx.xx.xx</td>
+                    <td th:text="${member.email}"></td>
                 </table>
             </div>
 
@@ -51,22 +52,32 @@
                 <label for="agree">確認しました</label>
             </div>
 
-
-            <div class="submitBtn"><input type="submit" value="登録" onclick="location.href='registerDone.html'"></div>
+            <div class="submitBtn">
+                <a href="/register/registerDone">登録</a> <!-- 登録ボタンがクリックされた際のリンク先を指定 -->
+            </div>
         </div>
-
-
     </main>
 
 	<footer>
 		<div class="footerContainer">
 			<div class="footerLogo">
-				<a th:href="@{/}"><img src="../img/footerIcon.svg" alt="bookKnowledge"
-					width="200px"></a>
+				<a th:href="@{/}"><img src="../img/footerIcon.svg"
+					alt="bookKnowledge" width="200px"></a>
 			</div>
 		</div>
 		<div class="copyright">©copyright Zangies EngineerGroup</div>
 	</footer>
+
+	<script type="text/javascript">
+		function submitForm() {
+			// フォームを取得
+			var form = document.getElementById('registrationForm');
+			// フォームを送信
+			if (form) {
+				form.submit();
+			}
+		}
+	</script>
 </body>
 
 </html>
