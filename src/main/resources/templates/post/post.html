@@ -39,13 +39,13 @@
         <div class="mainContainer">
             <h1>POST / 書籍登録</h1>
 
-            <form action="" class="imgForm">
-                <img src="../img/listSimple2.jpg" alt="">
-                <input type="submit" value="画像を挿入する" class="submitBtn">
-            </form>
-
-            <form action="" method="post" th:object="${books}">
+            <form action="" method="post" th:object="${books}" enctype="multipart/form-data">
                 <div class="inputArea">
+                	<div class="imgArea">
+                	<h2 class="inputTitle">書籍画像</h2>
+                    <input type="file" name="file" id="file" th:field="*{img}" accept="image/*" required >
+                    </div>
+                    
                     <div class="bookTitle inputBlock">
                         <h2 class="inputTitle">タイトル / <span>50文字以内で入力してください</span></h2>
                         <p th:errors="*{bookName}" class="error"></p>

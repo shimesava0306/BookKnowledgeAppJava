@@ -16,8 +16,8 @@ public class Books {
 	private String bookName;
 	
 	@NotBlank(message = "著者を入力してください")
-	@Size(min = 8,max = 30, message = "半角英数字8文字以上30文字以内で入力してください")
-	private String author;
+	@Size(max = 30, message = "30文字以内で入力してください")
+	private String author;  // 修正：フィールド名を "author" に変更
 	
 	@NotBlank(message = "点数を入力してください")
 	@Range(min=0, max=100, message="0点以上100以下で入力して下さい" )
@@ -35,5 +35,7 @@ public class Books {
 	private String review;
 	
 	private String buyLink;
+	
+	private byte[] img;
 
 }

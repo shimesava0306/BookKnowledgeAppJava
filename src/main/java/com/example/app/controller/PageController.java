@@ -1,15 +1,24 @@
 package com.example.app.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.app.domain.Books;
 import com.example.app.domain.Member;
 import com.example.app.mapper.BooksMapper;
 import com.example.app.mapper.MemberMapper;
+import com.example.app.service.BooksService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,17 +34,22 @@ public class PageController {
     public String indexPage() {
         return "index";
     }
-
+    
+  	private final BooksService service;
+  	
     //list
     @GetMapping("/list")
-    public String listPage() {
-        return "bookList/list";
+    public String list(Model model) throws Exception {
+    	model.addAttribute("books", service.getBooksList());
+    	return "bookList/list";
     }
 
-    @GetMapping("/list/listDetail")
-    public String listDetailPage() {
+    @GetMapping("/list/listDetail/{id}")
+    public String listDetailPage(@PathVariable Integer id, Model model)throws Exception {
+    		model.addAttribute("book", service.getBooksById(id));
         return "bookList/listDetail";
     }
+
 
     @GetMapping("/list/review")
     public String reviewPage() {
@@ -49,7 +63,13 @@ public class PageController {
     }
     
     @PostMapping("/post")
-    public String add(@Valid Books books, Errors errors) throws Exception {
+    public String add(@Valid Books books, Errors errors,@RequestParam("file") MultipartFile file) throws Exception {
+     
+   // ファイルを保存するディレクトリの絶対パスを設定
+    	Path uploadDir = Paths.get("src", "main", "resources", "static", "img");
+    	Path dst = uploadDir.resolve(file.getOriginalFilename());
+    	Files.copy(file.getInputStream(), dst);
+    	
         if (errors.hasErrors()) {
             return "post/post"; 
         }

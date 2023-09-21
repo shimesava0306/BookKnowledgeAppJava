@@ -75,11 +75,12 @@ textarea{
     -4px -4px 8px #ffffff;
 }
 
-form img{
-    margin-right:5rem;
-    width:50%;
-}
 
-.imgForm{
-    margin-bottom:3rem;
+.imgArea input{
+	width:20rem;
+	margin:1rem auto;
+	background:none;
+	box-shadow:none;
+	text-align:center;
+	padding:0;
 }

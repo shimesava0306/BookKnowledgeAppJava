@@ -3,9 +3,26 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.mapper.BooksMapper">
 
+<select id="selectAll" resultType="Books">
+SELECT
+book_id,book_name,author,
+score,catch_copy, point_first,
+point_second,point_third,review,buy_link
+FROM my_books;
+</select>
+
 <insert id="addBooks" parameterType="com.example.app.domain.Books">
-	INSERT INTO my_books (book_name, anthor, score, catch_copy, point_first, point_second,point_third,review,buy_link)
-	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink})
+	INSERT INTO my_books (book_name, author, score, catch_copy, point_first, point_second,point_third,review,buy_link,img)
+	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img})
 </insert>
+
+<select id="selectById" parameterType="int" resultType="Member">
+SELECT
+book_id,book_name,author,
+score,catch_copy, point_first,
+point_second,point_third,review,buy_link,img
+FROM my_books;
+WHERE my_books.id = #{id}
+</select>
 
 </mapper>
