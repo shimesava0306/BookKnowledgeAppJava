@@ -1,8 +1,6 @@
 package com.example.app.controller;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,12 +61,15 @@ public class PageController {
     }
     
     @PostMapping("/post")
-    public String add(@Valid Books books, Errors errors,@RequestParam("file") MultipartFile file) throws Exception {
+    public String add(@Valid Books books, Errors errors,@RequestParam MultipartFile file) throws Exception {
+    	
+    	if(!file.isEmpty()) {
+    	String fileName = file.getOriginalFilename();
+    	File dest = new File("C:/Users/zd2N05/uploads/" + fileName);
+    	file.transferTo(dest);
+    	books.setImg("C:/Users/zd2N05/uploads/" + fileName);
+    	}
      
-   // ファイルを保存するディレクトリの絶対パスを設定
-    	Path uploadDir = Paths.get("src", "main", "resources", "static", "img");
-    	Path dst = uploadDir.resolve(file.getOriginalFilename());
-    	Files.copy(file.getInputStream(), dst);
     	
         if (errors.hasErrors()) {
             return "post/post"; 

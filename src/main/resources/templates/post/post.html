@@ -2,121 +2,145 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POST | BOOK KNOWLEDGE</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/post.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POST | BOOK KNOWLEDGE</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/post.css}">
 </head>
 
 <body>
-    <header>
-        <div class="headerContainer">
-            <div class="headerLogo">
-                <a th:href="@{/}">
-                    <h1>Book Knowledge</h1>
-                    <img src="/img/bookIcon.svg" alt="Book Knowledge" width="72px">
-                </a>
-            </div>
-            <div class="sectionList">
-                <nav>
-                    <ul>
-                        <li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
-                        <li> <a th:href="@{/post}">POST/書籍登録</a></li>
-                        <li> <a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="userArea" id="userName">
-                <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
-                <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="headerContainer">
+			<div class="headerLogo">
+				<a th:href="@{/}">
+					<h1>Book Knowledge</h1> <img src="/img/bookIcon.svg"
+					alt="Book Knowledge" width="72px">
+				</a>
+			</div>
+			<div class="sectionList">
+				<nav>
+					<ul>
+						<li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
+						<li><a th:href="@{/post}">POST/書籍登録</a></li>
+						<li><a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="userArea" id="userName">
+				<a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a> <a
+					class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
+			</div>
+		</div>
+	</header>
 
-    <main>
-        <div class="mainContainer">
-            <h1>POST / 書籍登録</h1>
-
-            <form action="" method="post" th:object="${books}" enctype="multipart/form-data">
-                <div class="inputArea">
-                	<div class="imgArea">
-                	<h2 class="inputTitle">書籍画像</h2>
-                    <input type="file" name="file" id="file" th:field="*{img}" accept="image/*" required >
-                    </div>
-                    
-                    <div class="bookTitle inputBlock">
-                        <h2 class="inputTitle">タイトル / <span>50文字以内で入力してください</span></h2>
-                        <p th:errors="*{bookName}" class="error"></p>
-                        <input type="text" th:field="*{bookName}">
-                    </div>
-
-                    <div class="author inputBlock">
-                        <h2 class="inputTitle">著者名 / <span>30文字以内で入力してください</span></h2>
-                        <p th:errors="*{author}" class="error"></p>
-                        <input type="text" th:field="*{author}">
-                    </div>
-
-                    <div class="score inputBlock">
-                        <h2 class="inputTitle">点数 / 100点満点 / <span>100までの数字で入力してください</span></h2>
-                        <p th:errors="*{score}" class="error"></p>
-                        <input type="text" th:field="*{score}">
-                    </div>
-
-                    <div class="catchCopy inputBlock">
-                        <h2 class="inputTitle">キャッチコピー / <span>100文字以内で入力してください</span></h2>
-                        <p th:errors="*{catchCopy}" class="error"></p>
-                        <input type="text" th:field="*{catchCopy}">
-                    </div>
-
-                    <div class="threePoints inputBlock">
-                        <h2 class="inputTitle">簡単三行まとめ / <span>各50文字以内で入力してください</span></h2>
-                        <p th:errors="*{pointFirst}" class="error"></p>
-                        <div class="points"><input type="text" th:field="*{pointFirst}"></div>
-                        <div class="points"><input type="text" th:field="*{pointSecond}"></div>
-                        <div class="points"><input type="text" th:field="*{pointThird}"></div>
-                    </div>
-
-                    <div class="threePoints inputBlock">
-                        <h2 class="inputTitle">感想 / <span>150文字以内で入力してください</span></h2>
-                        <p th:errors="*{review}" class="error"></p>
-                        <textarea th:field="*{review}"></textarea>
-                    </div>
-
-                    <div class="threePoints inputBlock">
-                        <h2 class="inputTitle">購入URL</h2>
-                        <p th:errors="*{buyLink}" class="error"></p>
-                        <input type="text" th:field="*{buyLink}">
-                    </div>
-                </div>
-
-                <input type="submit" value="次へ進む" class="submitBtn">
-            </form>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footerContainer">
-            <div class="footerLogo">
-                <a th:href="@{/}"><img src="/img/footerIcon.svg" alt="bookKnowledge" width="200px"></a>
-            </div>
-            <div class="footerSectionList">
-                <ul>
-                    <li><a th:href="@{/}">TOP</a></li>
-                    <li><a th:href="@{/list}">BOOKS</a></li>
-                    <li> <a href="@{/post}">POST</a></li>
-                    <li> <a href="@{/mypage}">MYPAGE</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">©copyright Zangies EngineerGroup</div>
-    </footer>
+	<main>
+		<div class="mainContainer">
+			<h1>POST / 書籍登録</h1>
 
 
-    <script>
-        document.getElementById("userName").style.display = "none";
-    </script>
+
+
+			<form action="" method="post" th:object="${books}" enctype="multipart/form-data">
+				<div class="inputArea">
+
+					<div class="imgArea">
+						<h2 class="inputTitle">書籍画像</h2>
+						<input type="file" name="file" id="file">
+					</div>
+					
+					<div class="bookTitle inputBlock">
+						<h2 class="inputTitle">
+							タイトル / <span>50文字以内で入力してください</span>
+						</h2>
+						<p th:errors="*{bookName}" class="error"></p>
+						<input type="text" th:field="*{bookName}" >
+					</div>
+
+					<div class="author inputBlock">
+						<h2 class="inputTitle">
+							著者名 / <span>30文字以内で入力してください</span>
+						</h2>
+						<p th:errors="*{author}" class="error"></p>
+						<input type="text" th:field="*{author}">
+					</div>
+
+					<div class="score inputBlock">
+						<h2 class="inputTitle">
+							点数 / 100点満点 / <span>100までの数字で入力してください</span>
+						</h2>
+						<p th:errors="*{score}" class="error"></p>
+						<input type="text" th:field="*{score}">
+					</div>
+
+					<div class="catchCopy inputBlock">
+						<h2 class="inputTitle">
+							キャッチコピー / <span>100文字以内で入力してください</span>
+						</h2>
+						<p th:errors="*{catchCopy}" class="error"></p>
+						<input type="text" th:field="*{catchCopy}">
+					</div>
+
+					<div class="threePoints inputBlock">
+						<h2 class="inputTitle">
+							簡単三行まとめ / <span>各50文字以内で入力してください</span>
+						</h2>
+						<p th:errors="*{pointFirst}" class="error"></p>
+						<div class="points">
+							<input type="text" th:field="*{pointFirst}">
+						</div>
+						<div class="points">
+							<input type="text" th:field="*{pointSecond}">
+						</div>
+						<div class="points">
+							<input type="text" th:field="*{pointThird}">
+						</div>
+					</div>
+
+					<div class="threePoints inputBlock">
+						<h2 class="inputTitle">
+							感想 / <span>150文字以内で入力してください</span>
+						</h2>
+						<p th:errors="*{review}" class="error"></p>
+						<textarea th:field="*{review}"></textarea>
+					</div>
+
+					<div class="threePoints inputBlock">
+						<h2 class="inputTitle">購入URL</h2>
+						<p th:errors="*{buyLink}" class="error"></p>
+						<input type="text" th:field="*{buyLink}">
+					</div>
+				</div>
+
+				<input type="submit" value="次へ進む" class="submitBtn">
+			</form>
+		</div>
+	</main>
+
+	<footer>
+		<div class="footerContainer">
+			<div class="footerLogo">
+				<a th:href="@{/}"><img src="/img/footerIcon.svg"
+					alt="bookKnowledge" width="200px"></a>
+			</div>
+			<div class="footerSectionList">
+				<ul>
+					<li><a th:href="@{/}">TOP</a></li>
+					<li><a th:href="@{/list}">BOOKS</a></li>
+					<li><a href="@{/post}">POST</a></li>
+					<li><a href="@{/mypage}">MYPAGE</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="copyright">©copyright Zangies EngineerGroup</div>
+	</footer>
+
+
+	<script>
+		document.getElementById("userName").style.display = "none";
+	</script>
 </body>
 
 </html>

@@ -36,6 +36,6 @@ public class Books {
 	
 	private String buyLink;
 	
-	private byte[] img;
+	private String img;
 
 }
