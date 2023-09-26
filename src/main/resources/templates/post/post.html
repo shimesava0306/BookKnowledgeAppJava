@@ -72,7 +72,7 @@
 							点数 / 100点満点 / <span>100までの数字で入力してください</span>
 						</h2>
 						<p th:errors="*{score}" class="error"></p>
-						<input type="text" th:field="*{score}">
+						<input type="number" min="1" max="100" value="1" th:field="*{score}">
 					</div>
 
 					<div class="catchCopy inputBlock">

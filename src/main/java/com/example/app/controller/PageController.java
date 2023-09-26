@@ -65,9 +65,9 @@ public class PageController {
     	
     	if(!file.isEmpty()) {
     	String fileName = file.getOriginalFilename();
-    	File dest = new File("C:/Users/zd2N05/uploads/" + fileName);
+    	File dest = new File("C:/Users/zd2N05/pleiades/workspace/BookKnowledgeApp/src/main/resources/static/img/uploads/" + fileName);
     	file.transferTo(dest);
-    	books.setImg("C:/Users/zd2N05/uploads/" + fileName);
+    	books.setImg("/uploads/" + fileName);
     	}
      
     	

@@ -2,161 +2,143 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIST DETAIL | BOOK KNOWLEDGE</title>
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/listDetail.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIST DETAIL | BOOK KNOWLEDGE</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/listDetail.css}">
 </head>
 
 <body>
-    <header>
-        <div class="headerContainer">
-            <div class="headerLogo">
-                <a th:href="@{/}">
-                    <h1>Book Knowledge</h1>
-                    <img src="/img/bookIcon.svg" alt="Book Knowledge" width="72px">
-                </a>
-            </div>
-            <div class="sectionList">
-                <nav>
-                    <ul>
-                        <li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
-                        <li> <a th:href="@{/post}">POST/書籍登録</a></li>
-                        <li> <a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="userArea" id="userName">
-                <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
-                <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="headerContainer">
+			<div class="headerLogo">
+				<a th:href="@{/}">
+					<h1>Book Knowledge</h1> <img src="/img/bookIcon.svg"
+					alt="Book Knowledge" width="72px">
+				</a>
+			</div>
+			<div class="sectionList">
+				<nav>
+					<ul>
+						<li><a th:href="@{/list}">BOOKS/書籍一覧</a></li>
+						<li><a th:href="@{/post}">POST/書籍登録</a></li>
+						<li><a th:href="@{/mypage}">MYPAGE/マイページ</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="userArea" id="userName">
+				<a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a> <a
+					class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
+			</div>
+		</div>
+	</header>
 
 
-    <main>
-        <div class="mainContainer">
-            <div class="panTitle"><a th:href="@{/}">TOP</a>　|　<a th:href="@{/list}">BOOKS / 書籍一覧　</a>|　嫌われる勇気 - アドラー心理学</div>
-            <h3 class="bookTitle">嫌われる勇気 - アドラー心理学</h3>
-            <p class="author">岸見一郎</p>
+	<main>
+		<div class="mainContainer">
+			<div class="panTitle">
+				<a th:href="@{/}">TOP</a> | <a th:href="@{/list}">BOOKS / 書籍一覧 </a>|
+				<span th:text="${book.bookName}"></span>
+			</div>
+			<h3 class="bookTitle" th:text="${book.bookName}"></h3>
+			<p class="author" th:text="${book.author}"></p>
 
-            <section class="detailMain">
-                <div class="detailTitle">
-                    <img src="/img/listSimple1.jpg" alt="">
-                </div>
+			<section class="detailMain">
+				<div class="detailTitle">
+					<img th:src="${book.img}" alt="">
+				</div>
 
-                <div class="detailInfo">
-                    <table class="topicBookInfo">
-                        <th>点数</th>
-                        <td>95 / 100</td>
-                        <th>キャッチコピー</th>
-                        <td>テストテストテストテストテストテストテストテストテスト</td>
-                        <th>簡単3行まとめ</th>
-                        <td>テストテストテストテストテストテストテストテストテスト</td>
-                        <td>テストテストテストテストテストテストテストテストテスト</td>
-                        <td>テストテストテストテストテストテストテストテストテスト</td>
-                        <th>感想</th>
-                        <td>テストテストテストテストテストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテストテストテストテストテスト
-                        </td>
-                    </table>
-                </div>
-            </section>
+				<div class="detailInfo">
+					<table class="topicBookInfo">
+						<th>点数</th>
+						<td><span th:text="${book.score}"></span> / 100</td>
+						<th>キャッチコピー</th>
+						<td th:text="${book.catchCopy}"></td>
+						<th>簡単3行まとめ</th>
+						<td th:text="${book.pointFirst}"></td>
+						<td th:text="${book.pointSecond}"></td>
+						<td th:text="${book.pointThird}"></td>
+						<th>感想</th>
+						<td th:text="${book.review}"></td>
+					</table>
+				</div>
+			</section>
 
-            <section class="review">
-                <h2>他ユーザーの評価</h2>
+			<section class="review">
+				<h2>他ユーザーの評価</h2>
 
-                <div class="reviewContainer">
-                    <div class="reviewCard">
-                        <h3>テストテストテスト</h3>
-                        <p class="reviewInner">
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテスト
-                        </p>
-                        <h4>点数：95/100</h4>
-                        <p>男性 / 20代</p>
-                    </div>
+				<div class="reviewContainer">
+					<div class="reviewCard">
+						<h3>テストテストテスト</h3>
+						<p class="reviewInner">テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテスト</p>
+						<h4>点数：95/100</h4>
+						<p>男性 / 20代</p>
+					</div>
 
-                    <div class="reviewCard">
-                        <h3>テストテストテストテスト</h3>
-                        <p class="reviewInner">
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテスト
-                        </p>
-                        <h4>点数：95/100</h4>
-                        <p>男性 / 20代</p>
-                    </div>
+					<div class="reviewCard">
+						<h3>テストテストテストテスト</h3>
+						<p class="reviewInner">テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテスト</p>
+						<h4>点数：95/100</h4>
+						<p>男性 / 20代</p>
+					</div>
 
-                    <div class="reviewCard">
-                        <h3>テストテストテストテスト</h3>
-                        <p class="reviewInner">
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテスト
-                        </p>
-                        <h4>点数：95/100</h4>
-                        <p>男性 / 20代</p>
-                    </div>
+					<div class="reviewCard">
+						<h3>テストテストテストテスト</h3>
+						<p class="reviewInner">テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテスト</p>
+						<h4>点数：95/100</h4>
+						<p>男性 / 20代</p>
+					</div>
 
-                    <div class="reviewCard">
-                        <h3>テストテストテストテスト</h3>
-                        <p class="reviewInner">
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテスト
-                        </p>
-                        <h4>点数：95/100</h4>
-                        <p>男性 / 20代</p>
-                    </div>
+					<div class="reviewCard">
+						<h3>テストテストテストテスト</h3>
+						<p class="reviewInner">テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテスト</p>
+						<h4>点数：95/100</h4>
+						<p>男性 / 20代</p>
+					</div>
 
-                    <div class="reviewCard">
-                        <h3>テストテストテストテスト</h3>
-                        <p class="reviewInner">
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテストテストテストテストテストテスト
-                            テストテストテストテスト
-                        </p>
-                        <h4>点数：95/100</h4>
-                        <p>男性 / 20代</p>
-                    </div>
-                </div>
+					<div class="reviewCard">
+						<h3>テストテストテストテスト</h3>
+						<p class="reviewInner">テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテストテストテストテストテストテスト
+							テストテストテストテストテストテストテストテストテスト テストテストテストテスト</p>
+						<h4>点数：95/100</h4>
+						<p>男性 / 20代</p>
+					</div>
+				</div>
 
-                <a th:href="@{/list/review}">すべてのレビューを見る ></a>
-            </section>
-        </div>
-    </main>
+				<a th:href="@{/list/review}">すべてのレビューを見る ></a>
+			</section>
+		</div>
+	</main>
 
-    <footer>
-        <div class="footerContainer">
-            <div class="footerLogo">
-                <a th:href="@{/}"><img src="/img/footerIcon.svg" alt="bookKnowledge" width="200px"></a>
-            </div>
-            <div class="footerSectionList">
-                <ul>
-                    <li><a th:href="@{/}">TOP</a></li>
-                    <li><a th:href="@{/list}">BOOKS</a></li>
-                    <li> <a href="@{/post}">POST</a></li>
-                    <li> <a href="@{/mypage}">MYPAGE</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">©copyright Zangies EngineerGroup</div>
-    </footer>
+	<footer>
+		<div class="footerContainer">
+			<div class="footerLogo">
+				<a th:href="@{/}"><img src="/img/footerIcon.svg"
+					alt="bookKnowledge" width="200px"></a>
+			</div>
+			<div class="footerSectionList">
+				<ul>
+					<li><a th:href="@{/}">TOP</a></li>
+					<li><a th:href="@{/list}">BOOKS</a></li>
+					<li><a href="@{/post}">POST</a></li>
+					<li><a href="@{/mypage}">MYPAGE</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="copyright">©copyright Zangies EngineerGroup</div>
+	</footer>
 </body>
 
 </html>

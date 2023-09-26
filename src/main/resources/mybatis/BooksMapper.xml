@@ -5,9 +5,9 @@
 
 <select id="selectAll" resultType="Books">
 SELECT
-book_id,book_name,author,
+id,book_name,author,
 score,catch_copy, point_first,
-point_second,point_third,review,buy_link
+point_second,point_third,review,buy_link,img
 FROM my_books;
 </select>
 
@@ -16,12 +16,12 @@ FROM my_books;
 	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img})
 </insert>
 
-<select id="selectById" parameterType="int" resultType="Member">
+<select id="selectById" parameterType="int" resultType="Books">
 SELECT
-book_id,book_name,author,
+id,book_name,author,
 score,catch_copy, point_first,
 point_second,point_third,review,buy_link,img
-FROM my_books;
+FROM my_books
 WHERE my_books.id = #{id}
 </select>
 
