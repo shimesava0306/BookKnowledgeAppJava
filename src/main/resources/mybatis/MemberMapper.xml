@@ -3,9 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.mapper.MemberMapper">
 
-<insert id="addMember" parameterType="com.example.app.domain.Member">
-	INSERT INTO members (user_id, user_pass, name, gender, emall)
-	VALUES (#{userId}, #{password}, #{name}, #{gender}, #{email})
-</insert>
+	<insert id="addMember"
+		parameterType="com.example.app.domain.Member">
+		INSERT INTO members (user_id, user_pass, name, gender, emall)
+		VALUES (#{userId}, #{password}, #{name}, #{gender}, #{email})
+	</insert>
+
+	<select id="selectByLoginId" resultType="Admin">
+		SELECT * FROM admins WHERE user_id = #{userId}
+	</select>
 
 </mapper>

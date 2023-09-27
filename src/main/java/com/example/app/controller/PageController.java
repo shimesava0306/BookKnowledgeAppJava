@@ -2,6 +2,7 @@ package com.example.app.controller;
 
 import java.io.File;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -120,6 +121,10 @@ public class PageController {
         if (errors.hasErrors()) {
             return "login/register"; // エラー時に登録ページに戻す
         }
+        
+        String hashed = BCrypt.hashpw(member.getPassword(), BCrypt.gensalt());
+        member.setPassword(hashed);
+        
         mapper.addMember(member);
         return "redirect:/register/registerDone";
     }
