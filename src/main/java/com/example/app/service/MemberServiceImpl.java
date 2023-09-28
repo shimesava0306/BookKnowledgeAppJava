@@ -16,18 +16,22 @@ public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
 
-	Member member = mapper.selectByLoginId();
 	@Override
 	public boolean isCorrectIdAndPassword(String userId, String password) throws Exception {
+		
+	Member member = mapper.selectByLoginId(userId);
+		
 	// ログインID が正しいかチェック
 	// ⇒ ログインID が正しくなければ、管理者データは取得されない
 	if(member == null) {
+	System.out.println("NG_ID");
 	return false;
 	}
 	
 	// パスワードが正しいかチェック
-	if(!BCrypt.checkpw(password, member.getPassword())) {
-	return false;
+	if (!BCrypt.checkpw(password, member.getPassword())) {
+    System.out.println("NG_PASS");
+    return false;
 	}
 	
 	return true;

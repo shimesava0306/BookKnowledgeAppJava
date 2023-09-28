@@ -32,7 +32,7 @@ header{
     width:80%;
     margin-inline:auto;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items:center;
     padding-top:0.5rem;
 }
@@ -52,7 +52,7 @@ align-items:center;
     margin-right:0.5rem;
 }
 .sectionList{
-    margin-inline:15rem 0.25rem;
+    margin-inline:8vw 0.25rem;
     font-size:1.25rem;
 }
 
@@ -75,6 +75,7 @@ nav ul li{
 }
 
 .loginButton,.registerButton{
+	margin-left:2rem;
     padding:0.5rem 1.5rem;
     box-shadow:2px 2px 3px #a0a0a0, 
     -2px -2px 3px #ffffff;
@@ -86,6 +87,11 @@ nav ul li{
     box-shadow: inset 2px 2px 3px #a0a0a0, 
     inset -2px -2px 3px #ffffff;
     color:#70707070;
+}
+
+.userName{
+	color:#0077ff;
+	text-shadow:1px 1px 1px #a0a0a0;
 }
 /*header end*/
 

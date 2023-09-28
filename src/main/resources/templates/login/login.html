@@ -27,15 +27,15 @@
     <main>
         <div class="mainContainer">
             <h1>LOG IN / 会員ログイン</h1>
-            <form action="">
+            <form action="" method="post" th:object="${member}">
                 <div class="idArea">
                     <h2>ログインID</h2>
-                    <input type="text" name="loginId">
+                    <input type="text" th:field="*{userId}">
                 </div>
 
                 <div class="passArea">
                     <h2>パスワード</h2>
-                    <input type="password" name="pass">
+                    <input type="password" th:field="*{password}">
                 </div>
 
                 <input type="submit" value="ログイン" class="submitBtn">

@@ -18,7 +18,9 @@ import com.example.app.domain.Member;
 import com.example.app.mapper.BooksMapper;
 import com.example.app.mapper.MemberMapper;
 import com.example.app.service.BooksService;
+import com.example.app.service.MemberService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -105,11 +107,40 @@ public class PageController {
     }
     
 
+    private final MemberService memberService;
+    
     //login
     @GetMapping("/login")
-    public String loginPage() {
-        return "login/login";
+    public String loginPage(@ModelAttribute("member") Member member) {
+    return "login/login";
     }
+    
+    @PostMapping("/login")
+    public String login(
+    		@Valid Member member,
+    		Errors errors,
+    		HttpSession session) throws Exception {
+    	
+    	
+    		// パスワードが正しくない
+    		if(!memberService.isCorrectIdAndPassword(member.getUserId(),member.getPassword())) {
+    		errors.rejectValue("userId", "error.incorrect_id_password");
+    		System.out.println("NG_PASS");
+    		return "login/login";
+    		}
+    		// 正しいログインID とパスワード
+    		// ⇒ セッションにログインID を格納し、リダイレクト
+    		session.setAttribute("userId", member.getUserId());
+    		return "redirect:/";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    // セッションを破棄し、トップページへ遷移
+    session.invalidate();
+    return "redirect:/";
+    }
+    
     
     @GetMapping("/register")
     public String registerPage(@ModelAttribute("member") Member member) {
