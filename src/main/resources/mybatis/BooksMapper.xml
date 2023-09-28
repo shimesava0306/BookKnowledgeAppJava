@@ -12,8 +12,8 @@ FROM my_books;
 </select>
 
 <insert id="addBooks" parameterType="com.example.app.domain.Books">
-	INSERT INTO my_books (book_name, author, score, catch_copy, point_first, point_second,point_third,review,buy_link,img)
-	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img})
+	INSERT INTO my_books (book_name, author, score, catch_copy, point_first, point_second,point_third,review,buy_link,img,user_id)
+	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img},#{userId})
 </insert>
 
 <select id="selectById" parameterType="int" resultType="Books">

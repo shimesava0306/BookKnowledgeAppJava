@@ -34,6 +34,9 @@ public class Books {
 	@Size(max = 150, message = "150文字以内で入力してください")
 	private String review;
 	
+	//ここにセッションで保存されているユーザーIDを保存させたい
+	private String userId;
+	
 	private String buyLink;
 	
 	private String img;

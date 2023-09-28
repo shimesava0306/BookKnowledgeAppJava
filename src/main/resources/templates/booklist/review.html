@@ -32,8 +32,10 @@
                 </nav>
             </div>
             <th:block th:if="${session.userId}">
-            <p>ユーザー名：<span th:text="${session.userId}"></span></p>
+            <div class="userArea">
+            <p class="userName">ユーザー名：<span th:text="${session.userId}"></span></p>
             <a class="loginButton" th:href="@{/logout}">LOGOUT/ログアウト</a>
+            </div>
             </th:block>
             
             <th:block th:unless="${session.userId}">

@@ -28,10 +28,19 @@
                     </ul>
                 </nav>
             </div>
+            <th:block th:if="${session.userId}">
+            <div class="userArea">
+            <p class="userName">ユーザー名：<span th:text="${session.userId}"></span></p>
+            <a class="loginButton" th:href="@{/logout}">LOGOUT/ログアウト</a>
+            </div>
+            </th:block>
+            
+            <th:block th:unless="${session.userId}">
             <div class="userArea" id="userName">
                 <a class="loginButton" th:href="@{/login}">LOGIN/ログイン</a>
                 <a class="registerButton" th:href="@{/register}">REGISTER/会員登録</a>
             </div>
+            </th:block>
         </div>
     </header>
 

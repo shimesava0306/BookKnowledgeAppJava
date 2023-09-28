@@ -1,6 +1,7 @@
 main{
     background-image:url("../img/booksBackground.svg");
     padding-block:1.5rem;
+    height:69.7vh;
 }
 
 .mainContainer{

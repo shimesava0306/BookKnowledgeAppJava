@@ -1,5 +1,7 @@
 package com.example.app.domain;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -17,13 +19,5 @@ public class Member {
 	@Size(min = 8,max = 30, message = "半角英数字8文字以上30文字以内で入力してください")
 	private String password;
 	
-	@NotBlank(message = "ユーザー名を入力してください")
-	@Size(max = 30, message = "半角英数字30文字以内で入力してください")
-	private String name;
-	
-	private Integer gender;
-	
-	@NotBlank(message = "メールアドレスを入力してください")
-	private String email;
-
+	private List<Books> books;
 }

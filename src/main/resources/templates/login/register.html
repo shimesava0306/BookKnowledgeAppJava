@@ -38,27 +38,6 @@
                     <input type="password" th:field="*{password}">
                 </div>
 
-                <div class="nameArea">
-                    <h2>ユーザー名 / <span>25文字以内で入力してください</span></h2>
-                    <p th:errors="*{name}" class="error"></p>
-                    <input type="text" th:field="*{name}">
-                </div>
-
-                <div class="genderArea">
-                    <h2>性別</h2>
-                    <select th:field="*{gender}">
-                        <option value="1">男性</option>
-                        <option value="2">女性</option>
-                        <option value="3">どちらでもない</option>
-                    </select>
-                </div>
-
-                <div class="mailArea">
-                    <h2>メールアドレス</h2>
-                    <p th:errors="*{email}" class="error"></p>
-                    <input type="email" th:field="*{email}">
-                </div>
-
                 <input type="submit" value="次へ進む" class="submitBtn">
             </form>
         </div>

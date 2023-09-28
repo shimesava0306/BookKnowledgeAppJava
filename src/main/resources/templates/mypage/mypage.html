@@ -29,8 +29,10 @@
                 </nav>
             </div>
             <th:block th:if="${session.userId}">
-            <p>ユーザー名：<span th:text="${session.userId}"></span></p>
+            <div class="userArea">
+            <p class="userName">ユーザー名：<span th:text="${session.userId}"></span></p>
             <a class="loginButton" th:href="@{/logout}">LOGOUT/ログアウト</a>
+            </div>
             </th:block>
             
             <th:block th:unless="${session.userId}">
@@ -48,7 +50,7 @@
             <div class="panTitle"><a th:href="@{/}">TOP　|　</a>MYPAGE/マイページ</div>
             <h1>マイページ / MY PAGE</h1>
             <div class="user">
-                <p>こんにちは、test さん</p>
+                <p>こんにちは、<span th:text="${session.userId}"></span> さん</p>
             </div>
 
             <div class="sectionContainer">
