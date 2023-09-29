@@ -1,6 +1,7 @@
 package com.example.app.controller;
 
 import java.io.File;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,13 @@ public class PageController {
 	@GetMapping("/list/review")
 	public String reviewPage() {
 		return "bookList/review";
+	}
+	
+	@GetMapping("/list/search/{keyword}")
+	public String searchPage(@PathVariable(name = "keyword") String keyword, Model model) throws Exception {
+	    List<Books> searchList = service.searchBooks(keyword);
+	    model.addAttribute("search", searchList);
+	    return "bookList/search";
 	}
 
 	//post

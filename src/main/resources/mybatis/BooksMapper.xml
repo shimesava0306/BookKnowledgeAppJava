@@ -16,6 +16,11 @@ FROM my_books;
 	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img},#{userId})
 </insert>
 
+<select id="searchBooks" parameterType="String" resultType="Books">
+SELECT * FROM my_books
+WHERE book_name LIKE CONCAT('%', #{keyword}, '%')
+</select>
+
 <select id="selectById" parameterType="int" resultType="Books">
 SELECT
 id,book_name,author,

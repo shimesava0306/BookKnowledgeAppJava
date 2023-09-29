@@ -8,4 +8,5 @@ public interface BooksService {
 	List<Books> getBooksList() throws Exception;
 	Books getBooksById(Integer id) throws Exception;
 	void addBooks(Books books) throws Exception;
+	List<Books> searchBooks(String keyword) throws Exception;
 }

@@ -38,4 +38,9 @@ public class BooksServiceImpl implements BooksService{
 		return booksMapper.selectById(id);
 	}
 
+	@Override
+	public List<Books> searchBooks(String keyword) throws Exception {
+    return booksMapper.searchBooks(keyword);
+}
+
 }
