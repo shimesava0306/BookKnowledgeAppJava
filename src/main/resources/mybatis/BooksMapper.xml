@@ -12,22 +12,51 @@ FROM my_books;
 </select>
 
 <insert id="addBooks" parameterType="com.example.app.domain.Books">
-	INSERT INTO my_books (book_name, author, score, catch_copy, point_first, point_second,point_third,review,buy_link,img,user_id)
-	VALUES (#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img},#{userId})
+	INSERT INTO my_books (user_id,book_name, author, score, catch_copy, point_first, point_second,point_third,review,buy_link,img)
+	VALUES (#{userId},#{bookName}, #{author}, #{score}, #{catchCopy}, #{pointFirst},#{pointSecond},#{pointThird},#{review},#{buyLink},#{img})
 </insert>
 
 <select id="searchBooks" parameterType="String" resultType="Books">
-SELECT * FROM my_books
-WHERE book_name LIKE CONCAT('%', #{keyword}, '%')
+    SELECT * FROM my_books
+    WHERE book_name LIKE CONCAT('%', #{keyword}, '%') OR author LIKE CONCAT('%', #{keyword}, '%')
 </select>
 
 <select id="selectById" parameterType="int" resultType="Books">
 SELECT
-id,book_name,author,
+id,user_id,book_name,author,
 score,catch_copy, point_first,
 point_second,point_third,review,buy_link,img
 FROM my_books
 WHERE my_books.id = #{id}
 </select>
+
+<select id="selectByUserId" resultType="Books">
+    SELECT
+    id, book_name, author,
+    score, catch_copy, point_first,
+    point_second, point_third, review, buy_link, img
+    FROM my_books
+    WHERE user_id = #{userId};
+</select>
+
+<delete id="BookDeleteById">
+DELETE FROM my_books WHERE my_books.id = #{id};
+</delete>
+
+<update id="updateBooks" parameterType="com.example.app.domain.Books">
+    UPDATE my_books
+    SET
+        book_name = #{bookName},
+        author = #{author},
+        score = #{score},
+        catch_copy = #{catchCopy},
+        point_first = #{pointFirst},
+        point_second = #{pointSecond},
+        point_third = #{pointThird},
+        review = #{review},
+        buy_link = #{buyLink},
+        img = #{img}
+    WHERE user_id = #{userId}
+</update>
 
 </mapper>

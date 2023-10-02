@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.app.domain.Books;
 import com.example.app.domain.Member;
-import com.example.app.mapper.BooksMapper;
 import com.example.app.mapper.MemberMapper;
 import com.example.app.service.BooksService;
 import com.example.app.service.MemberService;
@@ -29,15 +28,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PageController {
 
-	private final BooksMapper mapperBooks;
 	private final MemberMapper mapper;
+	private final BooksService service;
 
 	@GetMapping("/")
-	public String indexPage() {
+	public String indexPage(Model model) throws Exception {
+		model.addAttribute("book", service.getBooksById(22));
 		return "index";
 	}
-
-	private final BooksService service;
 
 	//list
 	@GetMapping("/list")
@@ -51,18 +49,31 @@ public class PageController {
 		model.addAttribute("book", service.getBooksById(id));
 		return "bookList/listDetail";
 	}
-
-	@GetMapping("/list/review")
-	public String reviewPage() {
-		return "bookList/review";
-	}
 	
-	@GetMapping("/list/search/{keyword}")
-	public String searchPage(@PathVariable(name = "keyword") String keyword, Model model) throws Exception {
-	    List<Books> searchList = service.searchBooks(keyword);
-	    model.addAttribute("search", searchList);
-	    return "bookList/search";
-	}
+  @GetMapping("/list/delete/{id}")
+  public String detailDeletePage(@PathVariable Integer id, Model model) throws Exception {
+      service.getBookDeleteById(id);
+      return "bookList/delete";
+  }
+  
+  @GetMapping("/list/edit/{id}")
+  public String detailEditPage(@PathVariable Integer id, @ModelAttribute("books")Books books) throws Exception {
+      return "bookList/edit";
+  }
+  
+  @PostMapping("/list/edit/{id}")
+  public String update(@Valid Books books, Model model, Errors errors, @RequestParam MultipartFile file) throws Exception {
+      // バリデーションエラーの場合
+      if (errors.hasErrors()) {
+          return "bookList/edit";  // テンプレート名を修正しました
+      }
+
+      // 本を更新する
+      service.updateBooks(books);
+
+      // 本の一覧画面にリダイレクト
+      return "redirect:/list";
+  }
 
 	//post
 	@GetMapping("/post")
@@ -71,21 +82,23 @@ public class PageController {
 	}
 
 	@PostMapping("/post")
-	public String add(@Valid Books books, Errors errors, @RequestParam MultipartFile file) throws Exception {
+	public String add(@Valid Books books, HttpSession session,Errors errors, @RequestParam MultipartFile file) throws Exception {
+	    if (!file.isEmpty()) {
+	        String fileName = file.getOriginalFilename();
+	        File dest = new File(
+	                "C:/Users/zd2N05/pleiades/workspace/BookKnowledgeApp/src/main/resources/static/img/uploads/" + fileName);
+	        file.transferTo(dest);
+	        books.setImg("/uploads/" + fileName);
+	    }
 
-		if (!file.isEmpty()) {
-			String fileName = file.getOriginalFilename();
-			File dest = new File(
-					"C:/Users/zd2N05/pleiades/workspace/BookKnowledgeApp/src/main/resources/static/img/uploads/" + fileName);
-			file.transferTo(dest);
-			books.setImg("/uploads/" + fileName);
-		}
+	    if (errors.hasErrors()) {
+	        return "post/post";
+	    }
 
-		if (errors.hasErrors()) {
-			return "post/post";
-		}
-		mapperBooks.addBooks(books);
-		return "redirect:/post/postDone";
+	    String userId = (String) session.getAttribute("userId");
+	    service.addBooks(books, userId);
+
+	    return "redirect:/post/postDone";
 	}
 
 	@GetMapping("/post/postCheck")
@@ -105,8 +118,11 @@ public class PageController {
 	}
 
 	@GetMapping("/mypage/myShelf")
-	public String myShelfPage() {
-		return "mypage/myShelf";
+	public String myShelfPage(Model model, HttpSession session) {
+	    String userId = (String) session.getAttribute("userId");
+	    List<Books> userBooks = service.selectByUserId(userId);
+	    model.addAttribute("userBooks", userBooks);
+	    return "mypage/myShelf";
 	}
 
 	@GetMapping("/mypage/myFavoriteBooks")

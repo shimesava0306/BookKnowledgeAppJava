@@ -55,32 +55,13 @@
 			<h1>わたしの本棚 / MY SHELF</h1>
 
 			<div class="cardInner">
-				<a th:href="@{/bookList/listDetail}">
+				<a th:href="@{'/list/listDetail/' + ${book.id}}"
+						th:each="book : ${userBooks}">
 					<div class="card">
-						<img src="/img/bookSample.jpg" alt="">
-						<h2>テストテストテスト</h2>
+						<img th:src="${book.img}" alt="">
+						<h2 th:text="${book.bookName}"></h2>
 					</div>
-				</a> <a th:href="@{/bookList/listDetail}">
-					<div class="card">
-						<img src="/img/bookSample.jpg" alt="">
-						<h2>テストテストテスト</h2>
-					</div>
-				</a> <a th:href="@{/bookList/listDetail}">
-					<div class="card">
-						<img src="/img/bookSample.jpg" alt="">
-						<h2>テストテストテスト</h2>
-					</div>
-				</a> <a th:href="@{/bookList/listDetail}">
-					<div class="card">
-						<img src="/img/bookSample.jpg" alt="">
-						<h2>テストテストテスト</h2>
-					</div>
-				</a> <a th:href="@{/bookList/listDetail}">
-					<div class="card">
-						<img src="/img/bookSample.jpg" alt="">
-						<h2>テストテストテスト</h2>
-					</div>
-				</a>
+				</a> 
 			</div>
 
 		</div>

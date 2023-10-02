@@ -52,8 +52,14 @@
 				<a th:href="@{/}">TOP</a> | <a th:href="@{/list}">BOOKS / 書籍一覧 </a>|
 				<span th:text="${book.bookName}"></span>
 			</div>
+			
 			<h3 class="bookTitle" th:text="${book.bookName}"></h3>
 			<p class="author" th:text="${book.author}"></p>
+			
+			<th:block th:if="${session.userId == book.userId}">
+			<a th:href="@{'/list/delete/' + ${book.id}}">この書籍を削除する</a>
+			<a th:href="@{'/list/edit/' + ${book.id}}">内容を修正する</a>
+			</th:block>
 
 			<section class="detailMain">
 				<div class="detailTitle">

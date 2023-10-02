@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.app.domain.Books;
 import com.example.app.mapper.BooksMapper;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -17,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 public class BooksServiceImpl implements BooksService{
 	
 	private final BooksMapper booksMapper;
-	private final HttpSession session; 
 
 	@Override
 	public List<Books> getBooksList() throws Exception {
@@ -25,11 +23,9 @@ public class BooksServiceImpl implements BooksService{
 	}
 
 	@Override
-	public void addBooks(Books books) throws Exception {
+	public void addBooks(Books books,String userId) throws Exception {
 		// セッションからユーザーIDを取得
-		String userId = (String) session.getAttribute("userId");
-		System.out.println("userId");
-		books.setUserId(userId);  // BooksオブジェクトにユーザーIDを設定
+		books.setUserId(userId);
 		booksMapper.addBooks(books);
 	}
 
@@ -42,5 +38,20 @@ public class BooksServiceImpl implements BooksService{
 	public List<Books> searchBooks(String keyword) throws Exception {
     return booksMapper.searchBooks(keyword);
 }
+
+	@Override
+	public List<Books> selectByUserId(String userId) {
+		return booksMapper.selectByUserId(userId);
+	}
+
+	@Override
+	public void getBookDeleteById(Integer id) {
+		booksMapper.BookDeleteById(id);
+	}
+
+	@Override
+	public void updateBooks(Books books) throws Exception {
+		booksMapper.updateBooks(books);
+	}
 
 }

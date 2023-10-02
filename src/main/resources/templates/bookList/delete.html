@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTER DONE | BOOK KNOWLEDGE</title>
+    <title>DELETE | BOOK KNOWLEDGE</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/registerDone.css}">
@@ -46,17 +46,16 @@
 
     <main>
         <div class="mainContainer">
-            <h1>書籍登録完了</h1>
+            <h1>書籍を削除しました</h1>
 
-            <p>登録が完了いたしました。<br>
-                登録した書籍を確認するにはマイページまたは<br>
-                書籍一覧ページから確認をお願いします。<br>
+            <p>書籍を削除いたしました<br>
+                再度書籍を登録したい場合はPOSTから登録をお願いします<br>
                 <br>
                 引き続きBOOK KNOWLEDGEをお楽しみください。
             </p>
 
             <a class="topBtn" th:href="@{/}">TOPへ戻る</a>
-            <a class="mypageBtn" th:href="@{/post}">続けて書籍を登録する</a>
+            <a class="mypageBtn" th:href="@{/mypage}">マイページ</a>
         </div>
     </main>
 

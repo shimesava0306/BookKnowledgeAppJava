@@ -106,6 +106,8 @@ label input:checked+span {
 .topicArea {
 	position: relative;
 	margin-bottom: 7rem;
+	/*実装完了まで非表示*/
+	display:none;
 }
 
 .topicAreaTitle {

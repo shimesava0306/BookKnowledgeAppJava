@@ -57,7 +57,7 @@
 				<a th:href="@{/}">TOP | </a>BOOKS / 書籍一覧
 			</div>
 			<section class="genreSelect">
-				<form th:action="@{'/list/search/' + ${keyword}}" method="get">
+				<form th:action="@{/list/search}" method="get">
 					<h2>検索</h2>
 					<div class="searchBar">
 						<input type="text" name="keyword" placeholder="キーワードを入力">
@@ -96,8 +96,8 @@
 				</form>
 			</section>
 
+			<h1 class="topicAreaTitle">書籍一覧</h1>
 			<section class="topicArea">
-				<h1 class="topicAreaTitle">書籍一覧</h1>
 				<h2 class="mostTopicTitle">評価の高い書籍</h2>
 				<div class="mainTopics">
 					<a th:href="@{/list/listDetail}">
