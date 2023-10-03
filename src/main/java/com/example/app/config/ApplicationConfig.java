@@ -13,8 +13,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/uploads/**")
-				.addResourceLocations(
-						"file:///C:/Users/zd2N05/pleiades/workspace/BookKnowledgeApp/src/main/resources/static/img/uploads/");
+				.addResourceLocations("file:/home/trainee/uploads/");
 	}
 
 	@Bean

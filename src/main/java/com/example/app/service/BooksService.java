@@ -12,4 +12,5 @@ public interface BooksService {
 	List<Books> selectByUserId(String userId);
 	void getBookDeleteById(Integer id);
 	void updateBooks(Books books)throws Exception;
+	Books randomById();
 }

@@ -53,13 +53,13 @@
 			<div class="swiper sample-slider">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="img/Frame 1.svg">
+						<a th:href="@{/list}"><img src="img/Frame 1.svg"></a>
 					</div>
 					<div class="swiper-slide">
-						<img src="img/Frame 2.svg">
+						<a th:href="@{/post}"><img src="img/Frame 2.svg"></a>
 					</div>
 					<div class="swiper-slide">
-						<img src="img/Frame 3.svg">
+						<a th:href="@{/}"><img src="img/Frame 3.svg"></a>
 					</div>
 				</div>
 				<div class="swiper-pagination"></div>
@@ -69,7 +69,7 @@
 
 			<section class="heroTopics">
 				<div class="heroBooksTitle">
-					<h2>今週、注目の一冊</h2>
+					<h2>まずは、一冊</h2>
 				</div>
 
 				<div class="topicsMain">
@@ -120,17 +120,15 @@
 
 			<section class="genreSelect">
 
-				<form action="">
+				<form th:action="@{/list/search}" method="get">
 					<h2>検索</h2>
 					<div class="searchBar">
-						<input type="text" name="keyword">
-						<button class="searchButton">
+						<input type="text" name="keyword" placeholder="キーワードを入力">
+						<button type="submit" class="searchButton">
 							<img src="img/search.svg" alt="" width="20px">
 						</button>
 					</div>
-				</form>
 
-				<form>
 					<h2>書籍の種類</h2>
 					<div class="genreSelectArea">
 						<label><input type="checkbox" value="文学・文芸" name="genre"><span>文学・文芸</span></label>
@@ -143,9 +141,7 @@
 						<label><input type="checkbox" value="雑誌" name="genre"><span>雑誌</span></label>
 						<label><input type="checkbox" value="雑誌" name="genre"><span>歴史書</span></label>
 					</div>
-				</form>
 
-				<form>
 					<h2>ジャンル</h2>
 					<div class="genreSelectArea">
 						<label><input type="checkbox" value="アクション" name="genre"><span>アクション</span></label>
@@ -164,6 +160,7 @@
 					</div>
 				</form>
 			</section>
+			
 			<section class="userEdit">
 				<div class="bookPostArea">
 					<div class="areaInfo">

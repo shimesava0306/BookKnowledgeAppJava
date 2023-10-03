@@ -15,4 +15,5 @@ public interface BooksMapper {
 	void addBooks(Books books);
 	void BookDeleteById(Integer id);
 	void updateBooks(Books books);
+	Books randomById();
 }

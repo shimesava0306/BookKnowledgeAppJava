@@ -54,4 +54,9 @@ public class BooksServiceImpl implements BooksService{
 		booksMapper.updateBooks(books);
 	}
 
+	@Override
+	public Books randomById() {
+		return  booksMapper.randomById();
+	}
+
 }

@@ -101,9 +101,15 @@ nav ul li:last-child{
 }
 /*header end*/
 
+/*main*/
+.panTitle a{
+	color:#0077FF;
+}
+/*main end*/
+
 /*footer*/
 footer{
-    background-color: black;
+    background-color: #000000;
     height:10rem;
     width:100%;
     color:#FFFFFF;

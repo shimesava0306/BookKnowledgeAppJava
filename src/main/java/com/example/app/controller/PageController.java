@@ -33,47 +33,78 @@ public class PageController {
 
 	@GetMapping("/")
 	public String indexPage(Model model) throws Exception {
-		model.addAttribute("book", service.getBooksById(22));
+		//DBの中からランダムで情報を取得したものをモデルに格納
+		model.addAttribute("book", service.randomById());
 		return "index";
 	}
 
 	//list
 	@GetMapping("/list")
 	public String list(Model model) throws Exception {
+		//全登録書籍を取得しモデルに格納
 		model.addAttribute("books", service.getBooksList());
 		return "bookList/list";
 	}
 
 	@GetMapping("/list/listDetail/{id}")
 	public String listDetailPage(@PathVariable Integer id, Model model) throws Exception {
+		//クリックされた書籍のIDを取得し、その書籍の詳細情報をモデルに格納
 		model.addAttribute("book", service.getBooksById(id));
 		return "bookList/listDetail";
 	}
+
+	@GetMapping("/list/delete/{id}")
+	public String detailDeletePage(@PathVariable Integer id, Model model) throws Exception {
+		//選択された書籍の情報を削除
+		service.getBookDeleteById(id);
+		return "bookList/delete";
+	}
+
+	@GetMapping("/list/edit/{id}")
+	//選択された書籍の情報を修正
+	public String detailEditPage(@PathVariable Integer id, @ModelAttribute("books") Books books) throws Exception {
+		return "bookList/edit";
+	}
+
+	@PostMapping("/list/edit/{id}")
+	public String update(@Valid Books books, Errors errors, Model model, @RequestParam MultipartFile file)
+			throws Exception {
+		//画像ファイルを画像パス化
+		if (!file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			//画像の保存先を選択
+			File dest = new File(
+			"/home/trainee/uploads/" + fileName);
+			//画像の保存
+			file.transferTo(dest);
+			//DBに保存する画像パスを設定、格納
+			books.setImg("/uploads/" + fileName);
+		}
+		//バリデーションエラーの場合、再度修正ページにリダイレクト
+		if (errors.hasErrors()) {
+			return "bookList/edit";
+		}
+		// 本を更新する
+		service.updateBooks(books);
+		// 本の一覧画面にリダイレクト
+		return "redirect:/list";
+	}
 	
-  @GetMapping("/list/delete/{id}")
-  public String detailDeletePage(@PathVariable Integer id, Model model) throws Exception {
-      service.getBookDeleteById(id);
-      return "bookList/delete";
-  }
-  
-  @GetMapping("/list/edit/{id}")
-  public String detailEditPage(@PathVariable Integer id, @ModelAttribute("books")Books books) throws Exception {
-      return "bookList/edit";
-  }
-  
-  @PostMapping("/list/edit/{id}")
-  public String update(@Valid Books books, Model model, Errors errors, @RequestParam MultipartFile file) throws Exception {
-      // バリデーションエラーの場合
-      if (errors.hasErrors()) {
-          return "bookList/edit";  // テンプレート名を修正しました
-      }
-
-      // 本を更新する
-      service.updateBooks(books);
-
-      // 本の一覧画面にリダイレクト
-      return "redirect:/list";
-  }
+	@GetMapping("/list/review")
+	public String reviewPage() {
+		return "bookList/review";
+	}
+	
+	@GetMapping("/list/search")
+	//キーワードで入力された値をrequestparamで取得
+	public String searchPage(@RequestParam(name = "keyword") String keyword, Model model) throws Exception {
+		//入力されたキーワードにて検索、抽出
+	    List<Books> searchList = service.searchBooks(keyword);
+	    //返ってきた値をモデルに格納
+	    model.addAttribute("search", searchList);
+	    //検索結果ページに出力
+	    return "bookList/search";
+	}
 
 	//post
 	@GetMapping("/post")
@@ -82,25 +113,35 @@ public class PageController {
 	}
 
 	@PostMapping("/post")
-	public String add(@Valid Books books, HttpSession session,Errors errors, @RequestParam MultipartFile file) throws Exception {
-	    if (!file.isEmpty()) {
-	        String fileName = file.getOriginalFilename();
-	        File dest = new File(
-	                "C:/Users/zd2N05/pleiades/workspace/BookKnowledgeApp/src/main/resources/static/img/uploads/" + fileName);
-	        file.transferTo(dest);
-	        books.setImg("/uploads/" + fileName);
-	    }
+	public String add(@Valid Books books, Errors errors, HttpSession session, @RequestParam MultipartFile file)
+			throws Exception {
+			//画像ファイルを画像パス化
+			if (!file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			//画像の保存先を選択
+			File dest = new File(
+					"/home/trainee/uploads/" + fileName);
+			//画像の保存
+			file.transferTo(dest);
+			//DBに保存する画像パスを設定、格納
+			books.setImg("/uploads/" + fileName);
+			}
+			//バリデーションエラーの場合、再度作成ページにリダイレクト
+			if (errors.hasErrors()) {
+			return "post/post";
+			}
+			//ユーザーIDをString型の変数に挿入
+			String userId = (String) session.getAttribute("userId");
+			//データベースに書籍情報、ユーザーIDを保存
+			service.addBooks(books, userId);
 
-	    if (errors.hasErrors()) {
-	        return "post/post";
-	    }
+			return "redirect:/post/postDone";
+			}
 
-	    String userId = (String) session.getAttribute("userId");
-	    service.addBooks(books, userId);
-
-	    return "redirect:/post/postDone";
-	}
-
+	/*
+	 * 未実装
+	 * 訓練終了後に着手予定
+	 */
 	@GetMapping("/post/postCheck")
 	public String postCheckPage() {
 		return "post/postCheck";
@@ -119,20 +160,27 @@ public class PageController {
 
 	@GetMapping("/mypage/myShelf")
 	public String myShelfPage(Model model, HttpSession session) {
-	    String userId = (String) session.getAttribute("userId");
-	    List<Books> userBooks = service.selectByUserId(userId);
-	    model.addAttribute("userBooks", userBooks);
-	    return "mypage/myShelf";
+		//セッションのユーザーIDをフィールドに格納
+		String userId = (String) session.getAttribute("userId");
+		//自分が登録した書籍のみ取得
+		List<Books> userBooks = service.selectByUserId(userId);
+		//上記の取得した書籍をモデルに格納
+		model.addAttribute("userBooks", userBooks);
+		return "mypage/myShelf";
 	}
 
+	/*
+	 * 未実装
+	 * 訓練終了後に着手予定
+	 */
 	@GetMapping("/mypage/myFavoriteBooks")
 	public String myFavoriteBooksPage() {
 		return "mypage/myFavoriteBooks";
 	}
 
+	//login
 	private final MemberService memberService;
 
-	//login
 	@GetMapping("/login")
 	public String loginPage(@ModelAttribute("member") Member member) {
 		return "login/login";
@@ -143,11 +191,10 @@ public class PageController {
 			@Valid Member member,
 			Errors errors,
 			HttpSession session) throws Exception {
-	// 入力に不備がある
-		if(errors.hasErrors()) {
-		return "login/login";
+		// 入力に不備がある
+		if (errors.hasErrors()) {
+			return "login/login";
 		}
-
 		// パスワードが正しくない
 		if (!memberService.isCorrectIdAndPassword(member.getUserId(), member.getPassword())) {
 			errors.rejectValue("userId", "error.incorrect_id_password");
@@ -157,9 +204,8 @@ public class PageController {
 		// 正しいログインID とパスワード
 		// ⇒ セッションにログインID を格納し、リダイレクト
 		session.setAttribute("userId", member.getUserId());
-		
+
 		return "redirect:/list";
-		
 
 	}
 
@@ -176,21 +222,27 @@ public class PageController {
 	}
 
 	@PostMapping("/register")
-	public String add(@Valid Member member, Errors errors,HttpSession session) throws Exception {
+	public String add(@Valid Member member, Errors errors, HttpSession session) throws Exception {
+		// エラー時に登録ページに戻す
 		if (errors.hasErrors()) {
-			return "login/register"; // エラー時に登録ページに戻す
+			return "login/register";
 		}
-
+		//PWをハッシュ化
 		String hashed = BCrypt.hashpw(member.getPassword(), BCrypt.gensalt());
+		//ハッシュ化したPWを格納
 		member.setPassword(hashed);
-
+		//DBに会員情報を登録
 		mapper.addMember(member);
-		
+		//セッションにユーザーIDを保存
 		session.setAttribute("userId", member.getUserId());
-		
+
 		return "redirect:/register/registerDone";
 	}
 
+	/*
+	 * 未実装
+	 * 訓練終了後に着手予定
+	 */
 	@GetMapping("/register/registerCheck")
 	public String registerCheckPage() {
 		return "login/registerCheck";

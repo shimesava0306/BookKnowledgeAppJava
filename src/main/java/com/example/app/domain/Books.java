@@ -17,7 +17,7 @@ public class Books {
 	
 	@NotBlank(message = "著者を入力してください")
 	@Size(max = 30, message = "30文字以内で入力してください")
-	private String author;  // 修正：フィールド名を "author" に変更
+	private String author; 
 	
 	@NotBlank(message = "点数を入力してください")
 	@Range(min=0, max=100, message="0点以上100以下で入力して下さい" )
@@ -34,7 +34,6 @@ public class Books {
 	@Size(max = 150, message = "150文字以内で入力してください")
 	private String review;
 	
-	//ここにセッションで保存されているユーザーIDを保存させたい
 	private String userId;
 	
 	private String buyLink;

@@ -65,7 +65,7 @@
 						th:each="book : ${search}">
 						<div class="card">
 							<img th:src="${book.img}" alt="Book Image">
-							<h3 class="cardTitle" th:text="${book.bookName}"></h3>
+							<h2 class="cardTitle" th:text="${book.bookName}"></h2>
 							<p class="cardAuthor" th:text="${book.author}"></p>
 						</div>
 					</a>

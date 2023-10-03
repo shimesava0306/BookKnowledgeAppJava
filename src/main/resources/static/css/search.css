@@ -51,25 +51,39 @@ main{
 }
 
 .searchBooks{
-    width:90%;
-    display:flex;
-    flex-wrap: wrap;
-    margin:2rem auto;
-    justify-content: space-around;
-    box-shadow: inset 4px 4px 6px #a0a0a0, 
-    inset -4px -4px 6px #ffffff;
-    border-radius:30px;
-    padding:3rem ;
+    margin-block:3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    grid-gap: 1rem;
+    box-shadow: inset 3px 3px 6px #a0a0a0, 
+    inset -3px -3px 6px #ffffff;
     background-color: #f5f2e9;
+    border-radius:15px;
+    padding:3rem 0.5rem;
 }
 
 .card{
-    margin:2rem 1rem;
+    text-align:center;
+    padding-block:1rem;
+    box-shadow: 4px 4px 8px #a0a0a0, -4px -4px 8px #ffffff;
+	border-radius: 5px;
+    height:22rem;
 }
 
-.card h3{
-    font-size:1.25rem;
-    margin-block:0.5rem;
+.searchBooks a:hover {
+	box-shadow: inset 4px 4px 6px #a0a0a0, inset -4px -4px 6px #ffffff;
+}
+
+.card h2{
+	font-size:1.25rem;
+	height:5rem;
+}
+
+.card img{
+    width:150px;
+    height:200px;
+    margin-bottom:1rem;
 }
 
 
