@@ -29,13 +29,13 @@
 			<h1>LOG IN / 会員ログイン</h1>
 
 			<form action="" method="post" th:object="${member}">
-				<p th:errors="*{userId}" class="error"></p>
+				<span th:errors="*{userId}" class="error"></span>
 				<div class="idArea">
 					<h2>ログインID</h2>
 					<input type="text" th:field="*{userId}">
 				</div>
 
-				<p th:errors="*{password}" class="error"></p>
+				<span th:errors="*{password}" class="error"></span>
 				<div class="passArea">
 					<h2>パスワード</h2>
 					<input type="password" th:field="*{password}">

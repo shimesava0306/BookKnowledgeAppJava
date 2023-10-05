@@ -205,7 +205,7 @@ public class PageController {
 		// ⇒ セッションにログインID を格納し、リダイレクト
 		session.setAttribute("userId", member.getUserId());
 
-		return "redirect:/list";
+		return "redirect:/";
 
 	}
 
